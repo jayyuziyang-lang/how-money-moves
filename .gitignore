@@ -24,3 +24,6 @@ book/pass*.log
 book/chapters/*.aux
 # 中文字体（约 76MB，用 node book/get-fonts.mjs 获取）
 book/fonts/*.otf
+# 封面派生文件（由 node book/render-cover.mjs 从 assets/cover-art.png 生成）
+book/cover-art.png
+book/_coverweb.html
