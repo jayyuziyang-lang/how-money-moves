@@ -1,0 +1,117 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 900" width="1200" height="900" role="img" aria-label="一枚硬币沿着一条手绘的环线，经过砂锅、手机、银行、集装箱与地球，最后回到起点">
+<title>钱是怎么跑起来的 · 封面插画</title>
+<defs>
+  <filter id="rough" x="-6%" y="-6%" width="112%" height="112%">
+    <feTurbulence type="fractalNoise" baseFrequency="0.018" numOctaves="3" seed="11" result="n"/>
+    <feDisplacementMap in="SourceGraphic" in2="n" scale="3.4" xChannelSelector="R" yChannelSelector="G"/>
+  </filter>
+  <filter id="rough2" x="-6%" y="-6%" width="112%" height="112%">
+    <feTurbulence type="fractalNoise" baseFrequency="0.022" numOctaves="3" seed="29" result="n"/>
+    <feDisplacementMap in="SourceGraphic" in2="n" scale="4.6" xChannelSelector="R" yChannelSelector="G"/>
+  </filter>
+  <filter id="grain">
+    <feTurbulence type="fractalNoise" baseFrequency="0.85" numOctaves="4" seed="3"/>
+    <feColorMatrix type="saturate" values="0"/>
+  </filter>
+  <style>
+    .ink   { fill:none; stroke:#2A2622; stroke-linecap:round; stroke-linejoin:round; }
+    .w3    { stroke-width:3.2 }
+    .w2    { stroke-width:2.2 }
+    .w15   { stroke-width:1.6 }
+    .patch { mix-blend-mode:multiply; }
+    .blue  { fill:#3E6B8C; }
+    .terra { fill:#C4553B; }
+    .must  { fill:#D8A94B; }
+    .fillw { fill:#F6F2E9; }
+  </style>
+</defs>
+
+<rect width="1200" height="900" fill="#F6F2E9"/>
+
+<!-- 孔版套色：色块整体相对线稿偏移，模拟印刷套色不准 -->
+<g class="patch" opacity="0.78" filter="url(#rough2)" transform="translate(6,7)">
+  <path class="blue" opacity="0.16" d="M200 520 C170 380 250 250 400 210 C560 168 720 180 880 240 C1010 288 1060 420 1000 540 C940 660 780 720 600 730 C420 740 250 680 200 520 Z"/>
+  <ellipse class="terra" cx="256" cy="648" rx="62" ry="34"/>
+  <rect class="blue" x="222" y="252" width="62" height="106" rx="12"/>
+  <path class="blue" d="M528 214 L600 172 L672 214 Z"/>
+  <rect class="blue" x="548" y="222" width="104" height="60"/>
+  <rect class="terra" x="878" y="268" width="58" height="34"/>
+  <rect class="must" x="892" y="234" width="58" height="34"/>
+  <circle class="blue" cx="906" cy="638" r="52"/>
+  <circle class="must" cx="600" cy="742" r="34"/>
+</g>
+
+<!-- 线稿 -->
+<g filter="url(#rough)">
+  <!-- 环线：钱跑的那条路 -->
+  <path class="ink w3" d="M200 520 C170 380 250 250 400 210 C560 168 720 180 880 240 C1010 288 1060 420 1000 540 C940 660 780 720 600 730 C420 740 250 680 200 520 Z"/>
+  <path class="ink w15" stroke-dasharray="3 11" opacity="0.55"
+        d="M214 522 C186 388 262 266 404 228 C560 186 714 198 868 256 C990 302 1038 424 982 536 C926 646 774 702 600 712 C428 722 262 668 214 522 Z"/>
+
+  <!-- 砂锅：故事的起点 -->
+  <g transform="translate(250,640)">
+    <path class="ink w3" d="M-58 -6 C-58 30 -30 44 0 44 C30 44 58 30 58 -6 Z" fill="#F6F2E9"/>
+    <path class="ink w3" d="M-66 -6 L66 -6"/>
+    <path class="ink w2" d="M-70 8 C-84 8 -84 26 -70 26"/>
+    <path class="ink w2" d="M70 8 C84 8 84 26 70 26"/>
+    <path class="ink w2" d="M-16 -22 C-26 -34 -6 -42 -16 -56"/>
+    <path class="ink w2" d="M4 -26 C-6 -40 14 -50 4 -66"/>
+    <path class="ink w2" d="M24 -22 C14 -34 34 -42 24 -56"/>
+    <path class="ink w2" d="M34 -14 L74 -46"/>
+    <path class="ink w2" d="M42 -8 L82 -40"/>
+  </g>
+
+  <!-- 手机：叮的那一声 -->
+  <g transform="translate(250,300)">
+    <rect class="ink w3 fillw" x="-32" y="-56" width="64" height="108" rx="12"/>
+    <path class="ink w15" d="M-20 -44 L20 -44"/>
+    <text x="0" y="14" text-anchor="middle" font-family="Georgia,serif" font-size="40" fill="#2A2622">¥</text>
+    <path class="ink w15" d="M44 -34 C56 -26 56 -6 44 2"/>
+    <path class="ink w15" d="M56 -46 C76 -32 76 -0 56 14"/>
+  </g>
+
+  <!-- 银行：账本真正落地的地方 -->
+  <g transform="translate(600,220)">
+    <path class="ink w3 fillw" d="M-76 -6 L0 -50 L76 -6 Z"/>
+    <path class="ink w3" d="M-62 -6 L-62 56 M-22 -6 L-22 56 M22 -6 L22 56 M62 -6 L62 56"/>
+    <path class="ink w3" d="M-84 56 L84 56"/>
+    <path class="ink w2" d="M-92 68 L92 68"/>
+  </g>
+
+  <!-- 集装箱与船：钱出了国 -->
+  <g transform="translate(910,290)">
+    <rect class="ink w3 fillw" x="-32" y="-2" width="62" height="34" rx="3"/>
+    <rect class="ink w3 fillw" x="-18" y="-38" width="62" height="34" rx="3"/>
+    <path class="ink w15" d="M-14 -2 L-14 32 M4 -2 L4 32 M0 -38 L0 -4 M20 -38 L20 -4"/>
+    <path class="ink w3" d="M-58 42 C-40 68 44 68 62 42 Z" fill="#F6F2E9"/>
+    <path class="ink w2" d="M-58 42 L62 42"/>
+    <path class="ink w15" d="M-72 58 C-60 66 -48 50 -36 58"/>
+    <path class="ink w15" d="M40 58 C52 66 64 50 76 58"/>
+  </g>
+
+  <!-- 地球：另一端有人在同一秒做决定 -->
+  <g transform="translate(900,640)">
+    <circle class="ink w3 fillw" cx="0" cy="0" r="52"/>
+    <path class="ink w15" d="M-52 -14 C-20 -2 20 -2 52 -14"/>
+    <path class="ink w15" d="M-52 16 C-20 28 20 28 52 16"/>
+    <path class="ink w15" d="M0 -52 C-24 -20 -24 20 0 52"/>
+    <path class="ink w15" d="M0 -52 C24 -20 24 20 0 52"/>
+    <path class="ink w15" stroke-dasharray="4 9" d="M-70 -46 C-20 -92 60 -80 84 -30"/>
+  </g>
+
+  <!-- 硬币：它一直在跑 -->
+  <g transform="translate(600,742)">
+    <circle class="ink w3 fillw" cx="0" cy="0" r="34"/>
+    <circle class="ink w15" cx="0" cy="0" r="27"/>
+    <text x="0" y="13" text-anchor="middle" font-family="Georgia,serif" font-size="36" fill="#2A2622">¥</text>
+    <path class="ink w2" d="M-56 -14 C-70 -6 -70 8 -56 16"/>
+    <path class="ink w15" d="M-76 -20 C-94 -8 -94 12 -76 24"/>
+  </g>
+
+  <!-- 回到起点的小箭头 -->
+  <path class="ink w2" d="M338 700 L306 686 M338 700 L328 668"/>
+</g>
+
+<!-- 纸张颗粒 -->
+<rect width="1200" height="900" filter="url(#grain)" opacity="0.055" style="mix-blend-mode:multiply"/>
+</svg>

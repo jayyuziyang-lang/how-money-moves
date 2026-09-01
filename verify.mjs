@@ -217,6 +217,25 @@ const e = await evalJS(`(function(){
   r.overflow=document.documentElement.scrollWidth>document.documentElement.clientWidth+1;
   return r;
 })()`);
+const cov = await evalJS(`(function(){
+  var r={};
+  var a=document.querySelector('.cover__art img');
+  r.art=!!a; r.loaded=a?(a.complete&&a.naturalWidth>0):false;
+  r.natural=a?(a.naturalWidth+'x'+a.naturalHeight):'';
+  r.by=(document.querySelector('.cover__by')||{textContent:''}).textContent.replace(/\\s+/g,'').trim();
+  var p=document.querySelector('a[href$=".pdf"]');
+  r.pdf=p?decodeURIComponent(p.getAttribute('href')):'';
+  r.dl=p?p.hasAttribute('download'):false;
+  r.foot=(document.querySelector('.foot')||{textContent:''}).textContent.indexOf('俞孜扬')>=0;
+  return r;
+})()`);
+out.push('--- 封面与署名 ---');
+ok('封面插画已加载', cov.art && cov.loaded, cov.natural);
+ok('作者署名', cov.by === '俞孜扬著', cov.by);
+ok('PDF 文件名正确', cov.pdf === '钱是怎么跑起来的（How money moves）.pdf', cov.pdf);
+ok('PDF 可下载', cov.dl);
+ok('页脚含署名', cov.foot);
+
 out.push('--- 首页 ---');
 ok('五卷卡片', e.parts === 5, e.parts + ' 卷');
 ok('29 个篇目入口', e.chLinks === 29, e.chLinks + ' 个');

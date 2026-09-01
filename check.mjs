@@ -23,7 +23,7 @@ for (const p of PAGES) {
     links++;
     let file = p, hash = '';
     if (h.startsWith('#')) hash = h.slice(1);
-    else { const s = h.split('#'); file = s[0].split('?')[0]; hash = s[1] || ''; }
+    else { const s = h.split('#'); file = decodeURIComponent(s[0].split('?')[0]); hash = s[1] || ''; }
     if (file && !existsSync(join(ROOT, file))) { console.log('X ' + p + ' -> 文件不存在 ' + h); problems++; continue; }
     if (hash && ids[file] && !ids[file].has(hash)) { console.log('X ' + p + ' -> 锚点不存在 ' + h); problems++; }
   }

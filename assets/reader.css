@@ -341,3 +341,23 @@ html[data-theme="dark"] .btn--primary .kicker{color:rgba(15,17,21,.68)}
 .page--appendix .gl{margin-top:14px}
 .seci--sub{padding-left:26px;font-size:12.8px;color:var(--ink-3)}
 .seci--sub::before{content:"";display:inline-block;width:10px;height:1px;background:var(--rule-2);vertical-align:middle;margin:0 8px 0 -18px}
+
+/* ---------- 封面署名与插画 ---------- */
+.cover__by{position:relative;display:flex;align-items:baseline;gap:9px;margin:-14px 0 30px}
+.cover__by b{font-size:1.04rem;font-weight:600;letter-spacing:.04em;color:var(--ink)}
+.cover__by span{font-family:var(--mono);font-size:10.5px;letter-spacing:.16em;color:var(--ink-4)}
+.cover__art{position:relative;margin:0 0 30px;padding:0}
+.cover__art img{
+  display:block;width:100%;height:auto;border-radius:var(--r-m);
+  background:#F6F2E9;box-shadow:var(--sh-1);
+}
+html[data-theme="dark"] .cover__art img{opacity:.92;filter:saturate(.92)}
+
+@media (min-width:1000px){
+  .cover__card{display:grid;grid-template-columns:minmax(0,1.02fr) minmax(0,0.98fr);column-gap:clamp(32px,4vw,60px);align-items:start}
+  .cover__meta,.cover h1,.cover__sub,.cover__by,.cover__cta{grid-column:1}
+  .cover__art{grid-column:2;grid-row:1 / span 5;align-self:center;margin-bottom:0}
+  .cover__facts{grid-column:1 / -1;margin-top:8px}
+  .cover__sub{margin-bottom:26px}
+  .cover__cta{margin-top:0}
+}

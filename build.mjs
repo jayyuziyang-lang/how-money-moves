@@ -61,6 +61,15 @@ const BOOK = {
   ],
 };
 
+const PDFNAME = '钱是怎么跑起来的（How money moves）.pdf';
+const AUTHOR = '俞孜扬';
+function coverArt() {
+  for (const f of ['cover-art.png', 'cover-art.jpg', 'cover-art.jpeg', 'cover-art.svg']) {
+    if (existsSync(join(ROOT, 'assets', f))) return 'assets/' + f;
+  }
+  return null;
+}
+
 const esc = (s) => String(s).replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;');
 const strip = (s) => s.replace(/<[^>]+>/g, '');
 const cnt = (s) => (s.match(/[\u4e00-\u9fa5]/g) || []).length;
@@ -236,10 +245,12 @@ function homePage() {
 '    <div class="cover__meta"><span class="bar"></span><span class="kicker">A FIELD GUIDE TO THE FINANCIAL WORLD · 2026 EDITION</span></div>',
 '    <h1>钱是怎么<em>跑</em>起来的</h1>',
 '    <p class="cover__sub">你每天都在用它，却没人告诉过你它从哪来、到哪去、凭什么值钱。这本书从楼下一顿 98 块的砂锅开始，一路拆到全球资本流动。不跳步，不甩术语，不预测涨跌。</p>',
+'    <p class="cover__by"><b>' + AUTHOR + '</b><span>著</span></p>',
+(coverArt() ? '    <figure class="cover__art"><img src="' + coverArt() + '" alt="封面插画：一枚硬币沿着一条手绘的环线，经过砂锅、手机、银行、集装箱与地球，最后回到起点" width="1200" height="900"></figure>' : ''),
 '    <div class="cover__cta">',
 '      <a class="btn btn--primary" id="resumeBtn" href="ch-00.html"><span class="kicker">开始阅读</span><b>序章 · 一张一百块的环球旅行</b></a>',
 '      <a class="btn" href="glossary.html"><span class="kicker">附录</span><b>术语速查 &amp; 数据快照</b></a>',
-'      <a class="btn" href="how-money-moves.pdf" download><span class="kicker">书籍版 · PDF</span><b>A4 排印本 · 约 200 页</b></a>',
+'      <a class="btn" href="' + encodeURI(PDFNAME) + '" download><span class="kicker">书籍版 · PDF</span><b>A4 排印本 · 202 页</b></a>',
 '    </div>',
 '    <div class="cover__facts">',
 '      <div><b>' + FLAT.length + '</b><span>篇，每篇独立成页</span></div>',
@@ -260,13 +271,13 @@ function homePage() {
 cards,
 '</main>',
 '<footer class="foot">',
-'  <p><b>《钱是怎么跑起来的》</b> · ' + BOOK.edition + ' · 全书 ' + FLAT.length + ' 篇，约 ' + (TOTAL / 10000).toFixed(1) + ' 万字。</p>',
+'  <p><b>《钱是怎么跑起来的》</b> · ' + AUTHOR + ' 著 · ' + BOOK.edition + ' · 全书 ' + FLAT.length + ' 篇，约 ' + (TOTAL / 10000).toFixed(1) + ' 万字。</p>',
 '  <p>数据截至 2026 年 8 月，来源包括中国人民银行、美联储、欧洲央行、国际金融协会（IIF）及公开财经报道。</p>',
 '  <p><strong>本文不构成任何投资建议。</strong>任何人告诉你稳赚不赔，请立刻去看 <a href="ch-23.html">第 23 章</a>。</p>',
 '</footer>'].join('\n');
   writeFileSync(join(ROOT, 'index.html'), smartQuotes(shell({
     title: BOOK.title + ' · ' + BOOK.sub,
-    desc: '金融科普阅读器：' + FLAT.length + ' 篇独立成页，支持书签、续读、全书搜索、夜读与米黄模式。2026 年 8 月版。',
+    desc: '俞孜扬 著。金融科普阅读器：' + FLAT.length + ' 篇独立成页，支持书签、续读、全书搜索、夜读与米黄模式。2026 年 8 月版。',
     body, cls: 'is-home' })), 'utf8');
 }
 

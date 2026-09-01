@@ -1,6 +1,6 @@
 # 钱是怎么跑起来的
 
-一本从零开始的金融世界说明书 · 2026 年 8 月版
+一本从零开始的金融世界说明书 · 俞孜扬 著 · 2026 年 8 月版
 
 **在线阅读：** https://jayyuziyang-lang.github.io/how-money-moves/
 
@@ -30,7 +30,9 @@
 快捷键：`←` `→` 翻章 · `T` 目录 · `B` 书签 · `F` 搜索 · `S` 设置 · `J` `K` 滚动 · `Esc` 关闭
 
 ### LaTeX 书籍版
-基于 **ElegantBook v4.7**，A4 开本，思源宋体正文 + 思源黑体标题 + 楷体引语，含封面、扉页、版权页、自序、术语表、数据快照、延伸阅读、参考文献与索引。
+成品：`钱是怎么跑起来的（How money moves）.pdf` · A4 · 202 页
+
+基于 **ElegantBook v4.7**，思源宋体正文 + 思源黑体标题 + 楷体引语，含手绘封面、扉页、版权页、自序、术语表、数据快照、延伸阅读、参考文献与索引。零 overfull 告警。
 
 ```bash
 cd book
@@ -42,8 +44,11 @@ latexmk -xelatex main.tex     # 或 xelatex → biber → makeindex → xelatex 
 首次编译前需下载中文字体（约 76MB，一次即可）：
 
 ```bash
-node book/get-fonts.mjs
+node book/get-fonts.mjs      # 下载思源宋体 / 思源黑体
+node book/render-cover.mjs   # 把封面 SVG 渲染成 300dpi 位图供 LaTeX 使用
 ```
+
+**换封面**：把你生成的图命名为 `cover-art.png` 放进 `assets/`，重新执行上面两条命令并 `node build.mjs`，网站与 LaTeX 会自动优先使用它。提示词见 `cover-prompts.md`。
 
 ## 目录结构
 
@@ -64,6 +69,8 @@ lint.mjs              文风与规范体检（禁用词 / 破折号 / 组件 / �
 check.mjs             全站链接与结构校验
 verify.mjs            无头 Chrome 功能验收（30 项断言）
 BRIEF.md              写作总纲，含反 AI 腔守则与 2026 事实速查表
+cover-prompts.md      封面生成提示词（浅色系 · 漫画手绘 · 三套方案）
+assets/cover-art.svg  手绘矢量封面插画（网站直接用，也是 LaTeX 封面的来源）
 book/                 LaTeX 书籍版工程
 ```
 
