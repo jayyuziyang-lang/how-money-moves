@@ -63,7 +63,8 @@
       return;
     }
     var t = e.target.closest('.dtab');
-    if (t) switchTab(t.getAttribute('data-tab'));
+    if (t) { switchTab(t.getAttribute('data-tab')); return; }
+    if (e.target.closest('#drawer a')) closeAll();
   });
 
   /* ---------------- 提示条 ---------------- */
@@ -187,8 +188,10 @@
       });
       h += '</div>';
     });
+    var onAp = body.classList.contains('is-appendix');
     h += '<div class="tocp"><div class="tocp__h">APPENDIX<b>附录</b></div>' +
-      '<a class="toci" href="glossary.html"><i>A</i><span>术语速查 &amp; 2026 数据快照</span><em></em></a></div>';
+      '<a class="toci' + (onAp ? ' is-cur' : '') + '" href="glossary.html"><i>A</i>' +
+      '<span>术语速查 &amp; 2026 数据快照</span><em></em></a></div>';
     pane.innerHTML = h;
     var cur = pane.querySelector('.is-cur');
     if (cur) setTimeout(function () { cur.scrollIntoView({ block: 'center' }); }, 60);
@@ -198,13 +201,15 @@
   function renderSections() {
     var pane = D.querySelector('.dpane[data-pane="sec"]');
     if (!pane) return;
-    if (!CUR || !CUR.sections || !CUR.sections.length) {
-      pane.innerHTML = '<div class="find__n">本页没有小节</div>'; return;
-    }
-    pane.innerHTML = '<div class="find__n">第 ' + CUR.no + ' 章 · ' + CUR.sections.length + ' 节</div>' +
-      CUR.sections.map(function (s) { return '<a class="seci" href="#' + s.id + '">' + s.title + '</a>'; }).join('');
+    var secs = (CUR && CUR.sections && CUR.sections.length) ? CUR.sections : (W.PAGE_SECTIONS || []);
+    if (!secs.length) { pane.innerHTML = '<div class="find__n">本页没有小节</div>'; return; }
+    var head = CUR ? ('第 ' + CUR.no + ' 章 · ' + secs.length + ' 节') : ('本页 ' + secs.length + ' 节');
+    pane.innerHTML = '<div class="find__n">' + head + '</div>' +
+      secs.map(function (s) {
+        return '<a class="seci' + (s.lv === 2 ? ' seci--sub' : '') + '" href="#' + s.id + '">' + s.title + '</a>';
+      }).join('');
     secLinks = [].slice.call(pane.querySelectorAll('.seci'));
-    secEls = CUR.sections.map(function (s) { return D.getElementById(s.id); });
+    secEls = secs.map(function (s) { return D.getElementById(s.id); });
     spySection();
   }
 
@@ -403,9 +408,17 @@
     var ticking = false;
     onScroll();
     setInterval(syncMarkBtn, 1200);
-  } else if (bar) {
+  } else {
+    var t2 = false;
     W.addEventListener('scroll', function () {
-      bar.style.width = (docProgress() * 100).toFixed(2) + '%';
+      if (t2) return;
+      t2 = true;
+      requestAnimationFrame(function () {
+        t2 = false;
+        if (bar) bar.style.width = (docProgress() * 100).toFixed(2) + '%';
+        spySection();
+      });
     }, { passive: true });
+    spySection();
   }
 })();

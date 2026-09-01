@@ -329,3 +329,15 @@ html[data-theme="dark"] .btn--primary .kicker{color:rgba(15,17,21,.68)}
   .rbar,.drawer,.scrim,.prefs,.pill,.toast,.chnav{display:none!important}
   .page{max-width:none;padding:0}
 }
+
+/* ---------- 附录页：放宽版心，术语表按网格铺开 ---------- */
+.page--appendix{max-width:min(1080px,94vw)}
+.page--appendix .ch-body,
+.page--appendix .ch-head,
+.ch-body--wide{max-width:none}
+.page--appendix .chapter{margin-bottom:clamp(40px,6vw,72px)}
+.page--appendix .ch-body>p,
+.page--appendix .ch-body>h3+p{max-width:var(--measure)}
+.page--appendix .gl{margin-top:14px}
+.seci--sub{padding-left:26px;font-size:12.8px;color:var(--ink-3)}
+.seci--sub::before{content:"";display:inline-block;width:10px;height:1px;background:var(--rule-2);vertical-align:middle;margin:0 8px 0 -18px}

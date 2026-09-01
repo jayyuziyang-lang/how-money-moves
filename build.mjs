@@ -270,6 +270,45 @@ cards,
     body, cls: 'is-home' })), 'utf8');
 }
 
+
+/* ---------- 附录页 ---------- */
+function appendixPage() {
+  const p = join(ROOT, 'content', 'appendix.html');
+  if (!existsSync(p)) return;
+  const frag = readFileSync(p, 'utf8');
+
+  const flat = [];
+  const re = /<section class="chapter" id="([^"]+)"[^>]*>[\s\S]*?<h2 class="ch-title">([\s\S]*?)<\/h2>|<h3 id="(gl-\d+)">([\s\S]*?)<\/h3>/g;
+  let m;
+  while ((m = re.exec(frag))) {
+    if (m[1]) flat.push({ id: m[1], title: strip(m[2]).trim(), lv: 1 });
+    else flat.push({ id: m[3], title: strip(m[4]).trim(), lv: 2 });
+  }
+
+  const body = chrome('附录 · 术语速查 & 2026 数据快照') +
+    '\n<main class="page page--appendix">\n' +
+    '<div class="page__meta"><a class="kicker" href="index.html">APPENDIX · 附录</a>' +
+    '<span class="kicker">46 个术语 · 数据截至 2026 年 8 月</span></div>\n' +
+    '<section class="part-hero" data-ghost="A">' +
+    '<div class="part-hero__meta"><span class="bar"></span><span class="kicker">APPENDIX · REFERENCE</span>' +
+    '<span class="part-hero__len">' + flat.filter(function (x) { return x.lv === 1; }).length + ' 节 · 46 个术语</span></div>' +
+    '<h1>术语速查 &amp; 2026 数据快照<small>REFERENCE</small></h1>' +
+    '<p class="part-hero__lede">这一页是给读完全书之后用的。术语按主题分组，每条都标了它在正文第几章展开；' +
+    '数据全部标注了时点，因为金融世界的数字变得很快，而结构变得很慢。</p></section>\n' +
+    frag + '\n' +
+    '<nav class="chnav">' +
+    '<a class="chnav__a" href="ep-3.html"><span class="kicker">← 上一篇</span><b>后记三 · 给读者的信</b></a>' +
+    '<a class="chnav__a chnav__a--nx" href="index.html"><span class="kicker">回到 →</span><b>书架与全书目录</b></a>' +
+    '</nav>\n</main>\n' +
+    '<script>window.PAGE_SECTIONS=' + JSON.stringify(flat) + ';</script>';
+
+  writeFileSync(join(ROOT, 'glossary.html'), smartQuotes(shell({
+    title: '附录 · 术语速查与 2026 数据快照 · ' + BOOK.title,
+    desc: '46 个金融术语速查、2026 年 8 月数据快照、十条不过时的原则、数据来源与延伸阅读。',
+    body, cls: 'is-appendix' })), 'utf8');
+  return flat.length;
+}
+
 function dataFiles() {
   const chapters = FLAT.map(function (c) {
     return { id: c.id, no: c.no, title: c.title, file: c.file, part: c.part, partName: c.partName, words: c.words, sections: c.sections };
@@ -306,8 +345,8 @@ function fixGlossary() {
 FLAT.forEach(chapterPage);
 BOOK.parts.forEach(partPage);
 homePage();
+const apn = appendixPage();
 dataFiles();
 redirects();
-fixGlossary();
-console.log('生成 ' + FLAT.length + ' 个章节页 + 4 个卷首页 + index.html + book.js + search.js + 4 个重定向');
+console.log('生成 ' + FLAT.length + ' 个章节页 + ' + BOOK.parts.length + ' 个卷首页 + index.html + glossary.html(' + apn + ' 节) + book.js + search.js + 4 个重定向');
 console.log('全书中文字数 ' + TOTAL);

@@ -232,10 +232,69 @@ out.push('--- 卷首页 part-3 ---');
 ok('本卷 6 章列表', f.n === 6, f.h1 + ' · ' + f.len);
 
 await open('/glossary.html');
-const g = await evalJS(`(function(){return {terms:document.querySelectorAll('.gl__i').length, bad:[].filter.call(document.querySelectorAll('a[href]'),function(a){return /level-\\d/.test(a.getAttribute('href'));}).length};})()`);
+const g = await evalJS(`(function(){
+  var r = {};
+  r.terms = document.querySelectorAll('.gl__i').length;
+  r.bad = [].filter.call(document.querySelectorAll('a[href]'), function(a){ return /level-\\d/.test(a.getAttribute('href')); }).length;
+  r.chrome = !!document.querySelector('.rbar') && !!document.querySelector('#drawer') && !!document.querySelector('#prefs');
+  r.oldShell = !!document.querySelector('.shell') || !!document.querySelector('.side');
+  r.secLinks = document.querySelectorAll('.dpane[data-pane="sec"] .seci').length;
+  // 每个小节锚点必须落在不同位置
+  var ys = [].map.call(document.querySelectorAll('.dpane[data-pane="sec"] .seci'), function(a){
+    var el = document.getElementById(a.getAttribute('href').slice(1));
+    return el ? Math.round(el.getBoundingClientRect().top + window.scrollY) : -1;
+  });
+  r.ys = ys;
+  r.uniqueY = new Set(ys).size;
+  r.missing = ys.filter(function(y){ return y < 0; }).length;
+  // 内容完整性：术语卡片不能被容器裁掉
+  var grids = [].slice.call(document.querySelectorAll('.gl'));
+  r.gridW = grids.length ? Math.round(grids[0].getBoundingClientRect().width) : 0;
+  r.pageW = Math.round(document.querySelector('.page').getBoundingClientRect().width);
+  r.clipped = [].filter.call(document.querySelectorAll('.gl__i'), function(e){
+    return e.scrollHeight > e.clientHeight + 2 || e.getBoundingClientRect().right > document.documentElement.clientWidth + 1;
+  }).length;
+  r.overflow = document.documentElement.scrollWidth > document.documentElement.clientWidth + 1;
+  r.sections = document.querySelectorAll('.chapter').length;
+  r.bars = document.querySelectorAll('.barfig__r').length;
+  r.rows = document.querySelectorAll('.tbl tbody tr').length;
+  r.rules = document.querySelectorAll('.flow__n').length;
+  return r;
+})()`);
 out.push('--- 附录 ---');
-ok('术语条目', g.terms > 40, g.terms + ' 条');
+ok('术语条目', g.terms === 46, g.terms + ' 条');
+ok('旧外壳已移除', !g.oldShell);
+ok('使用新阅读器外壳', g.chrome);
+ok('小节导航 9 项', g.secLinks === 9, g.secLinks + ' 项');
+ok('锚点全部存在且互不重叠', g.missing === 0 && g.uniqueY === g.secLinks, '纵坐标 ' + g.ys.join(', '));
+ok('术语网格未被版心裁断', g.gridW > 700, '网格 ' + g.gridW + 'px / 版心 ' + g.pageW + 'px');
+ok('无卡片内容被裁切', g.clipped === 0, g.clipped + ' 个被裁');
+ok('附录页无横向溢出', !g.overflow);
+ok('四个大节齐全', g.sections === 4, g.sections + ' 节');
+ok('数据快照图表完整', g.bars === 4 && g.rows >= 10 && g.rules === 10, '条形 ' + g.bars + ' · 表格行 ' + g.rows + ' · 原则 ' + g.rules);
 ok('附录内链已迁移到新结构', g.bad === 0);
+
+const g2 = await evalJS(`(function(){
+  document.querySelector('[data-act="toc"]').click();
+  document.querySelector('.dtab[data-tab="sec"]').click();
+  var a = document.querySelectorAll('.dpane[data-pane="sec"] .seci')[4];
+  var target = a.getAttribute('href').slice(1);
+  a.click();
+  return { closed: !document.body.classList.contains('is-drawer'), target: target };
+})()`);
+await sleep(700);
+const g3 = await evalJS("(function(){var el=document.getElementById('" + g2.target + "');return {y:Math.round(window.scrollY), elTop:Math.round(el.getBoundingClientRect().top)};})()");
+ok('点击小节可跳转且抽屉自动关闭', g2.closed && Math.abs(g3.elTop) < 220, '目标 ' + g2.target + ' 滚动到 ' + g3.y + '，元素距顶 ' + g3.elTop + 'px');
+
+const g4 = await evalJS(`(function(){
+  document.querySelector('[data-act="prefs"]').click();
+  document.querySelector('.seg[data-pref="size"] button[data-v="xl"]').click();
+  var fs = parseFloat(getComputedStyle(document.querySelector('.gl__i p')).fontSize);
+  document.querySelector('.seg[data-pref="size"] button[data-v="m"]').click();
+  document.querySelector('[data-act="close"]').click();
+  return fs;
+})()`);
+ok('附录页阅读设置生效', g4 >= 15, '大字号下术语说明 ' + g4 + 'px');
 
 out.push('');
 out.push(problems.length ? ('存在 ' + problems.length + ' 个问题：\n  - ' + problems.join('\n  - ')) : '全部通过');
