@@ -1,0 +1,5 @@
+# 构建与预览产物
+_shot-*.png
+node_modules/
+.DS_Store
+Thumbs.db

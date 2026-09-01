@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="zh-CN" data-theme="light" data-size="m">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<meta name="description" content="从零开始的金融科普：钱是什么、货币怎么被创造、利率如何传导、风险如何定价、周期为何轮回。26 章，四个层级，2026 年 8 月版。">
+<title>钱是怎么跑起来的 · 一本从零开始的金融世界说明书</title>
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='7' fill='%2323407A'/%3E%3Ctext x='16' y='23' font-family='Georgia,serif' font-style='italic' font-size='19' fill='%23fff' text-anchor='middle'%3E%C2%A5%3C/text%3E%3C/svg%3E">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" media="print" onload="this.media='all'" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500&family=Newsreader:ital,wght@0,400;0,500;0,600;1,400;1,500;1,600&display=swap">
+<link rel="stylesheet" href="assets/style.css">
+<script>try{var t=localStorage.getItem('mm.theme'),s=localStorage.getItem('mm.size');if(t)document.documentElement.setAttribute('data-theme',t);if(s)document.documentElement.setAttribute('data-size',s);}catch(e){}</script>
+</head>
+<body>
+<div class="progress"></div>
+<header class="topbar">
+  <a class="topbar__home" href="index.html"><b>钱是怎么跑起来的</b><span>HOW MONEY MOVES</span></a>
+  <div class="topbar__mid"></div>
+  <nav class="topbar__tools">
+    <button class="tbtn" data-set="size" data-val="s" title="小字号">A<sup style="font-size:.7em">-</sup></button>
+    <button class="tbtn" data-set="size" data-val="m" title="标准字号">A</button>
+    <button class="tbtn" data-set="size" data-val="l" title="大字号">A<sup style="font-size:.7em">+</sup></button>
+    <button class="tbtn" data-set="theme" data-val="toggle" title="日间 / 夜读模式" style="margin-left:6px">
+      <svg viewBox="0 0 24 24"><path d="M21 12.8A9 9 0 1 1 11.2 3a7 7 0 0 0 9.8 9.8Z"/></svg>
+    </button>
+  </nav>
+</header>
+
+<div class="cover">
+  <div class="cover__card">
+    <div class="cover__meta"><span class="bar"></span><span class="kicker">A FIELD GUIDE TO THE FINANCIAL WORLD · 2026 EDITION</span></div>
+    <h1>钱是怎么<em>跑</em>起来的</h1>
+    <p class="cover__sub">你每天都在用它，却没人告诉过你它从哪来、到哪去、凭什么值钱。这本书从楼下一顿 98 块的砂锅开始，一路拆到全球资本流动。不跳步，不甩术语，不预测涨跌。</p>
+    <div class="cover__facts">
+      <div><b>26</b><span>章，从零基础到进阶</span></div>
+      <div><b>4</b><span>个层级，逐层加深</span></div>
+      <div><b>9<i>万</i></b><span>字，可通读也可跳读</span></div>
+      <div><b>2026.08</b><span>数据与政策截止时点</span></div>
+    </div>
+  </div>
+</div>
+
+<main class="home">
+
+  <div class="home__head">
+    <span class="kicker kicker--accent">WHY THIS BOOK</span>
+    <h2>大多数人不是不懂金融，是没人把线接上过</h2>
+    <p>财经新闻只报道“事件”：美联储按兵不动、LPR 连续持平、某家银行暴雷。它从不解释这些点之间的<em>管道</em>。于是你记住了一堆名词，却始终不知道钱是怎么从你的扫码支付，走到德国的一台机器、美国的一张国债、以及你手机里那个 0.7% 的涨幅上的。</p>
+    <p>这本书只干一件事：<strong>把线接上。</strong></p>
+  </div>
+
+  <div class="levels">
+      <a class="lv" href="level-1.html">
+        <span class="lv__n">I</span>
+        <h3>地基篇：钱到底是什么<small>FOUNDATIONS</small></h3>
+        <p>不谈投资，不谈赚钱。先把最朴素的问题问清楚：你钱包里那串数字，凭什么能换来一碗面？</p>
+        <ol>
+          <li><i>00</i>一张一百块的环球旅行</li>
+          <li><i>01</i>钱不是财富，钱是一套记账系统</li>
+          <li><i>02</i>你的存款，其实不在银行的金库里</li>
+          <li><i>03</i>利息：时间是有价格的</li>
+          <li><i>04</i>通货膨胀：每天从你口袋里拿走一点的那个人</li>
+          <li><i>05</i>资产、负债、净值：全世界通用的三个词</li>
+          <li><i>06</i>所有金融的原点：今天的钱换明天的钱</li>
+        </ol>
+        <div class="lv__go"><span>进入这一层</span><span>→</span></div>
+      </a>
+      <a class="lv" href="level-2.html">
+        <span class="lv__n">II</span>
+        <h3>管道篇：这台机器怎么转<small>THE PLUMBING</small></h3>
+        <p>钻到地板下面，看那些看不见的管子：钱怎么被造出来，央行的阀门拧在哪，利率怎么一路走到你的房贷单上。</p>
+        <ol>
+          <li><i>07</i>货币是怎么“凭空”出现的</li>
+          <li><i>08</i>央行不是印钞厂，是水闸和温度计</li>
+          <li><i>09</i>利率的传导链：从政策利率到你的房贷</li>
+          <li><i>10</i>债券：世界上最大、最无聊、最要命的市场</li>
+          <li><i>11</i>股票：把一家公司切成一亿片</li>
+          <li><i>12</i>汇率与美元体系：为什么全世界用别人的钱做生意</li>
+        </ol>
+        <div class="lv__go"><span>进入这一层</span><span>→</span></div>
+      </a>
+      <a class="lv" href="level-3.html">
+        <span class="lv__n">III</span>
+        <h3>天气篇：潮汐、风暴与泡沫<small>RISK &amp; CYCLES</small></h3>
+        <p>金融世界里没有绝对安全，只有“风险被定了什么价”。这一层讲风险如何被标价、被放大、被转移，以及一部演了四百年的老剧本。</p>
+        <ol>
+          <li><i>13</i>风险的价格：为什么有人借钱 3%，有人 12%</li>
+          <li><i>14</i>杠杆：金融世界的放大镜与绞肉机</li>
+          <li><i>15</i>衍生品：从农民的保险单到华尔街的赌桌</li>
+          <li><i>16</i>影子银行：管道之外的管道</li>
+          <li><i>17</i>泡沫与崩溃的通用剧本</li>
+          <li><i>18</i>周期：为什么好日子和坏日子会轮流来</li>
+        </ol>
+        <div class="lv__go"><span>进入这一层</span><span>→</span></div>
+      </a>
+      <a class="lv" href="level-4.html">
+        <span class="lv__n">IV</span>
+        <h3>落地篇：你在其中怎么活<small>YOUR MOVE</small></h3>
+        <p>前三层是地图，这一层是导航。你不必成为交易员，但你需要知道自己的资产负债表长什么样。</p>
+        <ol>
+          <li><i>19</i>给自己做一张资产负债表</li>
+          <li><i>20</i>收益从哪儿来：三种钱和一个残酷等式</li>
+          <li><i>21</i>资产配置：唯一的免费午餐</li>
+          <li><i>22</i>复利的真相，和关于复利的谎言</li>
+          <li><i>23</i>骗局的五个零件</li>
+          <li><i>24</i>2026：六个你必须知道的新变量</li>
+          <li><i>25</i>金融的本质，是陌生人之间的信任</li>
+        </ol>
+        <div class="lv__go"><span>进入这一层</span><span>→</span></div>
+      </a>
+  </div>
+
+  <section class="spine">
+    <span class="kicker kicker--accent">THE SPINE · 全书主线</span>
+    <h2>26 章其实只讲了一条链</h2>
+    <p>这条链是全书的骨架，每一章都挂在它的某一环上。读完你应该能自己复述一遍。到那时候再看财经新闻，看到的就不是孤立的点了。</p>
+    <div class="spine__chain">
+      <span>钱是记账</span><b>→</b>
+      <span>记账要有人信</span><b>→</b>
+      <span>信任靠制度和抵押品</span><b>→</b>
+      <span>银行放贷时创造存款</span><b>→</b>
+      <span>钱约等于债</span><b>→</b>
+      <span>债要付息</span><b>→</b>
+      <span>付息需要增长</span><b>→</b>
+      <span>增长需要投资</span><b>→</b>
+      <span>投资需要给风险定价</span><b>→</b>
+      <span>定价错误加杠杆等于危机</span><b>→</b>
+      <span>危机后重置资产负债表</span><b>→</b>
+      <span>循环重来</span>
+    </div>
+  </section>
+
+  <section class="spine" style="margin-top:20px">
+    <span class="kicker kicker--accent">HOW TO READ</span>
+    <h2>怎么读</h2>
+    <div class="box box--eg">
+      <div class="box__t">完全零基础</div>
+      <p>从序章开始，按顺序读第一层。读完第 6 章，饭桌上八成的经济话题你都能接得住。第一层不需要任何数学，最多做几道加减法。</p>
+    </div>
+    <div class="box box--data">
+      <div class="box__t">能看懂新闻标题，但不知道背后的机制</div>
+      <p>直接从第 7 章开始。那是全书的枢纽，它会推翻一个几乎所有人都持有的错误常识。看完再回头补第一层也不迟。</p>
+    </div>
+    <div class="box box--warn">
+      <div class="box__t">只想解决自己的问题</div>
+      <p>跳到第四层。第 19 章教你给自己做一张表，第 23 章可能是全书唯一能直接帮你省下几十万的一章。但读完请务必回头看第二层：不知道机器怎么转，任何理财决策都是碰运气。</p>
+    </div>
+    <div class="box box--deep">
+      <div class="box__t">阅读器功能</div>
+      <p>右上角切换<strong>字号</strong>和<strong>夜读模式</strong>，设置会被记住。章节页面里键盘 <strong>J</strong> / <strong>K</strong> 上下跳章，左侧目录跟随阅读进度高亮。</p>
+    </div>
+  </section>
+
+  <nav class="pager" style="max-width:none">
+    <a class="pv" href="level-1.html"><span class="kicker">从头开始 →</span><b>序章 · 一张一百块的环球旅行</b></a>
+    <a class="nx" href="glossary.html"><span class="kicker">附录 →</span><b>术语速查 &amp; 2026 数据快照</b></a>
+  </nav>
+
+</main>
+
+<footer class="foot">
+  <p><b style="color:var(--ink-3)">《钱是怎么跑起来的》</b> · 2026 年 8 月版 · 全书 26 章，约 9 万字。</p>
+  <p>本文为通识科普读物。所有数据截至 2026 年 8 月，来源包括中国人民银行、美联储、欧洲央行、国际金融协会（IIF）及公开财经报道。金融环境变化很快，请以最新官方数据为准。</p>
+  <p><strong style="color:var(--ink-3)">本文不构成任何投资建议。</strong>任何人告诉你稳赚不赔，请立刻回到 <a href="level-4.html#ch-23">第 23 章</a>。</p>
+</footer>
+<script src="assets/app.js"></script>
+</body>
+</html>
