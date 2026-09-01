@@ -238,7 +238,7 @@ ok('术语条目', g.terms > 40, g.terms + ' 条');
 ok('附录内链已迁移到新结构', g.bad === 0);
 
 out.push('');
-out.push(problems.length ? ('存在 ' + problems.length + ' 个问题') : '全部通过');
+out.push(problems.length ? ('存在 ' + problems.length + ' 个问题：\n  - ' + problems.join('\n  - ')) : '全部通过');
 console.log(out.join('\n'));
 
 ws.close();

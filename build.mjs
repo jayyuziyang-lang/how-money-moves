@@ -65,12 +65,18 @@ const esc = (s) => String(s).replace(/&/g, '&amp;').replace(/</g, '&lt;').replac
 const strip = (s) => s.replace(/<[^>]+>/g, '');
 const cnt = (s) => (s.match(/[\u4e00-\u9fa5]/g) || []).length;
 
-function smartQuotes(html) {
+function quoteTextNodes(html) {
   const parts = html.split(/(<[^>]*>)/);
   for (let i = 0; i < parts.length; i += 2) {
     let open = true;
     parts[i] = parts[i].replace(/"/g, function () { open = !open; return open ? '\u201d' : '\u201c'; });
   }
+  return parts.join('');
+}
+// 只处理正文文本节点，绝不碰 <script>/<style> 里的代码
+function smartQuotes(html) {
+  const parts = html.split(/(<script[\s\S]*?<\/script>|<style[\s\S]*?<\/style>)/i);
+  for (let i = 0; i < parts.length; i += 2) parts[i] = quoteTextNodes(parts[i]);
   return parts.join('');
 }
 
