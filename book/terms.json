@@ -1,0 +1,386 @@
+[
+ {
+  "zh": "阿尔法",
+  "en": "alpha"
+ },
+ {
+  "zh": "保证金追缴",
+  "en": "margin call"
+ },
+ {
+  "zh": "贝塔",
+  "en": "beta"
+ },
+ {
+  "zh": "比特币",
+  "en": "Bitcoin"
+ },
+ {
+  "zh": "币种错配",
+  "en": "currency mismatch"
+ },
+ {
+  "zh": "变现摩擦",
+  "en": "liquidity friction"
+ },
+ {
+  "zh": "波动损耗",
+  "en": "volatility decay"
+ },
+ {
+  "zh": "波动拖累",
+  "en": "variance drag"
+ },
+ {
+  "zh": "处置效应",
+  "en": "disposition effect"
+ },
+ {
+  "zh": "道德风险",
+  "en": "moral hazard"
+ },
+ {
+  "zh": "定期寿险",
+  "en": "term life insurance"
+ },
+ {
+  "zh": "定投",
+  "en": "dollar-cost averaging"
+ },
+ {
+  "zh": "法定货币",
+  "en": "fiat money"
+ },
+ {
+  "zh": "非遍历的",
+  "en": "non-ergodic"
+ },
+ {
+  "zh": "风险溢价",
+  "en": "risk premium"
+ },
+ {
+  "zh": "浮存金",
+  "en": "float"
+ },
+ {
+  "zh": "负债",
+  "en": "liabilities"
+ },
+ {
+  "zh": "复利",
+  "en": "compound interest"
+ },
+ {
+  "zh": "复式记账",
+  "en": "double-entry bookkeeping"
+ },
+ {
+  "zh": "隔夜逆回购",
+  "en": "ON RRP"
+ },
+ {
+  "zh": "购买力平价",
+  "en": "purchasing power parity"
+ },
+ {
+  "zh": "宏观审慎",
+  "en": "macroprudential"
+ },
+ {
+  "zh": "回购",
+  "en": "repo"
+ },
+ {
+  "zh": "货币乘数",
+  "en": "money multiplier"
+ },
+ {
+  "zh": "集合平均",
+  "en": "ensemble average"
+ },
+ {
+  "zh": "几何平均",
+  "en": "geometric mean"
+ },
+ {
+  "zh": "间接融资",
+  "en": "indirect finance"
+ },
+ {
+  "zh": "金融加速器",
+  "en": "financial accelerator"
+ },
+ {
+  "zh": "净息差",
+  "en": "net interest margin"
+ },
+ {
+  "zh": "净值",
+  "en": "net worth"
+ },
+ {
+  "zh": "久期",
+  "en": "duration"
+ },
+ {
+  "zh": "利率走廊",
+  "en": "interest rate corridor"
+ },
+ {
+  "zh": "量化宽松",
+  "en": "QE"
+ },
+ {
+  "zh": "流动性螺旋",
+  "en": "liquidity spiral"
+ },
+ {
+  "zh": "流动性溢价",
+  "en": "liquidity premium"
+ },
+ {
+  "zh": "没有立法的税",
+  "en": "taxation without legislation"
+ },
+ {
+  "zh": "美丽的去杠杆",
+  "en": "beautiful deleveraging"
+ },
+ {
+  "zh": "名义本金",
+  "en": "notional"
+ },
+ {
+  "zh": "名义利率",
+  "en": "nominal rate"
+ },
+ {
+  "zh": "逆向选择",
+  "en": "adverse selection"
+ },
+ {
+  "zh": "期限错配",
+  "en": "maturity mismatch"
+ },
+ {
+  "zh": "期限溢价",
+  "en": "term premium"
+ },
+ {
+  "zh": "权益乘数",
+  "en": "equity multiplier"
+ },
+ {
+  "zh": "人力资本",
+  "en": "human capital"
+ },
+ {
+  "zh": "三元悖论",
+  "en": "impossible trinity"
+ },
+ {
+  "zh": "商业发展公司",
+  "en": "business development company"
+ },
+ {
+  "zh": "生命周期投资",
+  "en": "life-cycle investing"
+ },
+ {
+  "zh": "剩余索取权",
+  "en": "residual claim"
+ },
+ {
+  "zh": "时间不一致",
+  "en": "time inconsistency"
+ },
+ {
+  "zh": "时间平均",
+  "en": "time average"
+ },
+ {
+  "zh": "实际利率",
+  "en": "real rate"
+ },
+ {
+  "zh": "市盈率",
+  "en": "P/E ratio"
+ },
+ {
+  "zh": "收益率曲线",
+  "en": "yield curve"
+ },
+ {
+  "zh": "赎回门",
+  "en": "gate"
+ },
+ {
+  "zh": "双重巧合难题",
+  "en": "double coincidence of wants"
+ },
+ {
+  "zh": "私募信贷",
+  "en": "private credit"
+ },
+ {
+  "zh": "所有者权益",
+  "en": "equity"
+ },
+ {
+  "zh": "套息交易",
+  "en": "carry trade"
+ },
+ {
+  "zh": "贴现",
+  "en": "discounting"
+ },
+ {
+  "zh": "贴现率",
+  "en": "discount rate"
+ },
+ {
+  "zh": "通货膨胀",
+  "en": "inflation"
+ },
+ {
+  "zh": "通胀保值国债",
+  "en": "TIPS"
+ },
+ {
+  "zh": "违约概率",
+  "en": "probability of default"
+ },
+ {
+  "zh": "违约损失率",
+  "en": "loss given default"
+ },
+ {
+  "zh": "稳定币",
+  "en": "stablecoin"
+ },
+ {
+  "zh": "无担保债权人",
+  "en": "unsecured creditor"
+ },
+ {
+  "zh": "无风险利率",
+  "en": "risk-free rate"
+ },
+ {
+  "zh": "现值",
+  "en": "present value"
+ },
+ {
+  "zh": "相对价格",
+  "en": "relative price"
+ },
+ {
+  "zh": "相关性",
+  "en": "correlation"
+ },
+ {
+  "zh": "消费性借贷",
+  "en": "consumption loan"
+ },
+ {
+  "zh": "信用利差",
+  "en": "credit spread"
+ },
+ {
+  "zh": "幸存者偏差",
+  "en": "survivorship bias"
+ },
+ {
+  "zh": "序列风险",
+  "en": "sequence of returns risk"
+ },
+ {
+  "zh": "因子",
+  "en": "factor"
+ },
+ {
+  "zh": "应收账款",
+  "en": "accounts receivable"
+ },
+ {
+  "zh": "盈亏平衡通胀率",
+  "en": "breakeven inflation"
+ },
+ {
+  "zh": "影子银行",
+  "en": "shadow banking"
+ },
+ {
+  "zh": "再平衡",
+  "en": "rebalancing"
+ },
+ {
+  "zh": "再中介化",
+  "en": "re-intermediation"
+ },
+ {
+  "zh": "在险价值",
+  "en": "Value at Risk"
+ },
+ {
+  "zh": "窄银行",
+  "en": "narrow bank"
+ },
+ {
+  "zh": "债务-通缩螺旋",
+  "en": "debt-deflation spiral"
+ },
+ {
+  "zh": "折旧",
+  "en": "depreciation"
+ },
+ {
+  "zh": "直接融资",
+  "en": "direct finance"
+ },
+ {
+  "zh": "质量调整",
+  "en": "hedonic adjustment"
+ },
+ {
+  "zh": "中央对手方清算",
+  "en": "central counterparty"
+ },
+ {
+  "zh": "蛛网模型",
+  "en": "cobweb model"
+ },
+ {
+  "zh": "准备金",
+  "en": "reserves"
+ },
+ {
+  "zh": "准备金余额利率",
+  "en": "IORB"
+ },
+ {
+  "zh": "资本",
+  "en": "capital"
+ },
+ {
+  "zh": "资不抵债",
+  "en": "negative equity"
+ },
+ {
+  "zh": "资产",
+  "en": "assets"
+ },
+ {
+  "zh": "自有住房服务",
+  "en": "owner's equivalent rent"
+ },
+ {
+  "zh": "DR007",
+  "en": "存款类机构质押式回购利率"
+ },
+ {
+  "zh": "SOFR",
+  "en": "担保隔夜融资利率"
+ }
+]

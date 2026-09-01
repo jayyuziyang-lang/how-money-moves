@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html lang="zh-CN" data-theme="light">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<meta name="theme-color" content="#F4F2ED">
+<meta name="description" content=" I AFTERWORD · 后记一 把二十六章压成一页 合上书两年之后，细节会忘。这一页让你在五分钟内，把二十六章重新拼回一条链。 这一页是这本书的替身。 你合上书两年，细节会掉，最后只剩几个模糊的念头；到那天再翻回二十六章，成本太高，也">
+<title>I 把二十六章压成一页 · 钱是怎么跑起来的</title>
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='7' fill='%2323407A'/%3E%3Ctext x='16' y='23' font-family='Georgia,serif' font-style='italic' font-size='19' fill='%23fff' text-anchor='middle'%3E%C2%A5%3C/text%3E%3C/svg%3E">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" media="print" onload="this.media='all'" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500&family=Newsreader:ital,wght@0,400;0,500;0,600;1,400;1,500;1,600&display=swap">
+<link rel="stylesheet" href="assets/style.css">
+<link rel="stylesheet" href="assets/reader.css">
+<script>try{var s=JSON.parse(localStorage.getItem(“hmm.prefs”)||“{}”),d=document.documentElement;if(s.theme)d.setAttribute(“data-theme”,s.theme);if(s.size)d.setAttribute(“data-size”,s.size);if(s.lh)d.setAttribute(“data-lh”,s.lh);if(s.width)d.setAttribute(“data-width”,s.width);if(s.font)d.setAttribute(“data-font”,s.font);}catch(e){}</script>
+</head>
+<body class="is-chapter" data-chapter="ep-1">
+<div class="progress"></div>
+<header class="rbar">
+  <button class="rbtn" data-act="toc" title="目录 (T)" aria-label="目录"><svg viewBox="0 0 24 24"><path d="M4 6h16M4 12h16M4 18h10"/></svg></button>
+  <a class="rbtn" href="index.html" title="回到书架"><svg viewBox="0 0 24 24"><path d="M3 10.5 12 4l9 6.5V20a1 1 0 0 1-1 1h-5v-6H9v6H4a1 1 0 0 1-1-1z"/></svg></a>
+  <div class="rbar__title">I · 把二十六章压成一页</div>
+  <button class="rbtn" data-act="find" title="搜索全书 (F)" aria-label="搜索"><svg viewBox="0 0 24 24"><circle cx="11" cy="11" r="7"/><path d="m20 20-3.5-3.5"/></svg></button>
+  <button class="rbtn rbtn--mark" data-act="mark" title="加入书签 (B)" aria-label="书签"><svg viewBox="0 0 24 24"><path d="M6 3h12v18l-6-4.5L6 21z"/></svg></button>
+  <button class="rbtn" data-act="prefs" title="阅读设置 (S)" aria-label="设置"><b>Aa</b></button>
+</header>
+<div class="scrim" data-act="close"></div>
+<aside class="drawer" id="drawer" aria-hidden="true">
+  <div class="drawer__tabs">
+    <button class="dtab is-on" data-tab="toc">目录</button>
+    <button class="dtab" data-tab="sec">本章</button>
+    <button class="dtab" data-tab="mark">书签</button>
+    <button class="dtab" data-tab="find">搜索</button>
+    <button class="rbtn drawer__x" data-act="close" aria-label="关闭"><svg viewBox="0 0 24 24"><path d="M6 6l12 12M18 6 6 18"/></svg></button>
+  </div>
+  <div class="drawer__body">
+    <div class="dpane is-on" data-pane="toc"></div>
+    <div class="dpane" data-pane="sec"></div>
+    <div class="dpane" data-pane="mark"></div>
+    <div class="dpane" data-pane="find"><div class="find"><input type="search" id="q" placeholder="搜索全书正文…" autocomplete="off" spellcheck="false"><div class="find__out"></div></div></div>
+  </div>
+</aside>
+<aside class="prefs" id="prefs" aria-hidden="true">
+  <div class="prefs__row"><span>主题</span><div class="seg" data-pref="theme"><button data-v="light">日间</button><button data-v="sepia">米黄</button><button data-v="dark">夜间</button></div></div>
+  <div class="prefs__row"><span>字号</span><div class="seg" data-pref="size"><button data-v="xs">小</button><button data-v="s">较小</button><button data-v="m">标准</button><button data-v="l">较大</button><button data-v="xl">大</button></div></div>
+  <div class="prefs__row"><span>行距</span><div class="seg" data-pref="lh"><button data-v="tight">紧凑</button><button data-v="normal">标准</button><button data-v="loose">宽松</button></div></div>
+  <div class="prefs__row"><span>版心</span><div class="seg" data-pref="width"><button data-v="narrow">窄</button><button data-v="normal">标准</button><button data-v="wide">宽</button></div></div>
+  <div class="prefs__row"><span>正文字体</span><div class="seg" data-pref="font"><button data-v="sans">黑体</button><button data-v="serif">宋体</button></div></div>
+  <div class="prefs__foot"><b>←</b> <b>→</b> 翻章 · <b>T</b> 目录 · <b>B</b> 书签 · <b>F</b> 搜索 · <b>S</b> 设置 · <b>Esc</b> 关闭</div>
+</aside>
+<div class="toast" id="toast"></div>
+<main class="page">
+<div class="page__meta"><a class="kicker" href="part-5.html">卷 05 · 后记</a><span class="kicker">3,106 字 · 约 8 分钟</span></div>
+<section class="chapter" id="ep-1">
+  <div class="ch-head">
+    <div class="ch-head__top">
+      <span class="ch-num">I</span>
+      <span class="kicker">AFTERWORD · 后记一</span>
+    </div>
+    <h2 class="ch-title">把二十六章压成一页</h2>
+    <p class="ch-lede">合上书两年之后，细节会忘。这一页让你在五分钟内，把二十六章重新拼回一条链。</p>
+  </div>
+
+  <div class="ch-body">
+
+    <p>这一页是这本书的替身。</p>
+
+    <p>你合上书两年，细节会掉，最后只剩几个模糊的念头；到那天再翻回二十六章，成本太高，也太慢。所以这里把全书压成一张五分钟能扫完的图：一条链，四卷，二十六句，最后五件事。忘得只剩这一页，也够你把整座建筑重新立起来。</p>
+
+    <p>用法只有一种：忘了，就翻到这一页扫一遍；扫完还拿不准，顺着那句话翻回原文。</p>
+
+    <h3 id="ep-1-s1">一条链</h3>
+
+    <p>全书只讲这一条链，反复讲，换着角度讲。它一共十二环。</p>
+
+    <div class="chain">
+      <span class="on">钱是记账</span><b>→</b>
+      <span>记账要有人信</span><b>→</b>
+      <span>信任靠制度和抵押品</span><b>→</b>
+      <span class="on">银行放贷时创造存款</span><b>→</b>
+      <span>钱约等于债</span><b>→</b>
+      <span>债要付息</span><b>→</b>
+      <span class="on">付息需要增长</span><b>→</b>
+      <span>增长需要投资</span><b>→</b>
+      <span>投资需要给风险定价</span><b>→</b>
+      <span class="on">定价错误加杠杆等于危机</span><b>→</b>
+      <span>危机后重置资产负债表</span><b>→</b>
+      <span>循环重来</span>
+    </div>
+
+    <p>十二环连起来读，是一口气：钱是记账，记账要有人信，信任靠制度和抵押品垫着；所以银行放贷那一刻，存款是当场造出来的，钱约等于债。债要付息，付息就得有增长，增长靠投资，投资得先给风险定价。定价一旦错了，再叠上杠杆，就是危机；危机逼人重置资产负债表，重置完，下一轮从头再来。</p>
+
+    <p>这条链上还有一个位置，常被看漏：你没有站在外面看它，你站在末端，是一张很小的资产负债表。机器怎么转你左右不了，但那张小表怎么摆，是你唯一说了算的事。这也是四卷为什么一路从天上讲到地上。</p>
+
+    <p>这条链还能倒着读。一场危机过后，钱没有消失，只是换了名字记在别人账上；从“重置资产负债表”往回摸，能摸到谁在借、谁在还、谁在扛损失。</p>
+
+    <p>随便拿一条新闻试。看到“某银行债券利差走阔”，往链条上找位置：这是“投资需要给风险定价”那一环，市场在重估谁会还不上钱。看到“居民提前还贷”，那是“钱约等于债”这一环在收缩。每一条新闻都能挂到其中一环上。</p>
+
+    <h3 id="ep-1-s2">四卷各管哪一段</h3>
+
+    <p>四卷不是按主题分的，是按这条链的进度分的。前一卷故意留的坑，后一卷负责填。</p>
+
+    <p>地基篇管头三环：钱是记账，记账要有人信，信任靠制度和抵押品。它给的不是知识，是一套读账的语法：资产、负债、净值，利息、通胀、贴现。解决的是“黑话太多”这件事，让没学过经济的人先能听懂饭桌上的对话。它回答“钱凭什么值钱”，不回答“怎么变有钱”；还故意留了一个坑：银行放出去的钱，最初从哪儿冒出来。</p>
+
+    <p>管道篇接过那个问题，管第四到第八环：放贷创造存款，钱约等于债，债要付息，付息需要增长，增长需要投资。它把货币怎么被造出来、央行管什么、利率怎么传到你的月供、债股汇怎么标价，一节一节铺开，让新闻标题背后的管道变得能看穿。走到结尾，你已经能把一条新闻翻译成一段因果。它留下一个更大的问号：管道里流的东西，为什么每隔几年就炸一次。</p>
+
+    <p>天气篇管第九到第十一环：给风险定价、加杠杆、出危机、重置资产负债表。它讲清楚三件事：风险的价格怎么算，杠杆怎么把小麻烦放大成灾难，泡沫和周期为什么必然反复。解决的是“为什么好日子和坏日子轮流来”。读完你会明白，危机不是意外，是这台机器的固定零件。它不管一件事：这些潮汐落到你个人头上，该怎么办。</p>
+
+    <p>落地篇管最后半环，也就是你：怎么做自己的资产负债表，收益到底从哪来，怎么配置才不白担风险，复利哪句是真哪句是假，骗局靠什么零件运转，2026 年哪六个变量在改写算式。从这里往后，书不再教你去看懂别人，只教你摆平自己那张表。它不再往下留问题，因为它绕回了起点：钱是记账，记账要人信，而你此刻已经知道谁在欠你。</p>
+
+    <p>四卷可以跳着读。急着防骗，直接翻落地篇；想懂新闻，先补管道篇。但那条链，最好从头到尾各走一遍。</p>
+
+    <h3 id="ep-1-s3">二十六章，压成二十六句</h3>
+
+    <p>下面每句都是那一章真正的落点，不是标题的复述。按顺序读，是全书骨架；随手挑一句，那一章就该在眼前立起来。这二十六句也不是并列的，是把上面那条链拆成二十六段；哪一句看着眼生，就说明那一环你已经忘了。</p>
+
+    <div class="flow">
+      <div class="flow__n"><i>00</i><div><b>一张一百块的环球旅行</b>你花掉的 98 块没动过一毫米，只是两行数字一减一加，却已顺手参与了一次清算、一次汇率报价。</div></div>
+      <div class="flow__n"><i>01</i><div><b>钱不是财富，钱是一套记账系统</b>先有欠账，后有铸币；钱不是藏在金库里的东西，是一群人一起记住的账。</div></div>
+      <div class="flow__n"><i>02</i><div><b>你的存款，其实不在银行的金库里</b>你把钱存进银行的那一刻，它就不再属于你，剩下的只是银行欠你的一张条。</div></div>
+      <div class="flow__n"><i>03</i><div><b>利息：时间是有价格的</b>利息拆开看，是时间、通胀、违约、流动性四样东西的价，反过来就是贴现率。</div></div>
+      <div class="flow__n"><i>04</i><div><b>通货膨胀：每天从你口袋里拿走一点的那个人</b>通胀不改动任何一行数字，它只把量东西的那把尺子悄悄改短，再在债主和欠债人之间搬钱。</div></div>
+      <div class="flow__n"><i>05</i><div><b>资产、负债、净值：全世界通用的三个词</b>资产等于负债加净值，净值才是财富；而一个人的金融资产，必然是另一个人的负债。</div></div>
+      <div class="flow__n"><i>06</i><div><b>所有金融的原点：今天的钱换明天的钱</b>金融只干两件事：把今天的钱搬到明天，把风险从一个人摊给一群人，其余都是工程细节。</div></div>
+      <div class="flow__n"><i>07</i><div><b>货币是怎么“凭空”出现的</b>银行放贷的那一刻钱才出生，你还款的那一刻这笔钱就死了，从没有人问过一句“这能兑现吗”。</div></div>
+      <div class="flow__n"><i>08</i><div><b>央行不是印钞厂，是水闸和温度计</b>央行决定不了钱有多少，它定的是钱的价格；它能把马牵到河边，逼不了马喝水。</div></div>
+      <div class="flow__n"><i>09</i><div><b>利率的传导链：从政策利率到你的房贷</b>政策利率到你的月供之间隔着七道闸，每一道都可能把信号拖慢，甚至让它蒸发在半路。</div></div>
+      <div class="flow__n"><i>10</i><div><b>债券：世界上最大、最无聊、最要命的市场</b>债券的价格和收益率永远反向，期限越长跌得越狠，因为那是一个除法，不是行情。</div></div>
+      <div class="flow__n"><i>11</i><div><b>股票：把一家公司切成一亿片</b>股票是排在所有人后面的那份剩饭，风险最大，也正因如此，长期回报最高。</div></div>
+      <div class="flow__n"><i>12</i><div><b>汇率与美元体系：为什么全世界用别人的钱做生意</b>汇率是两种钱互相的报价，今天主要看资本往哪儿跑，货往哪儿走是次要的。</div></div>
+      <div class="flow__n"><i>13</i><div><b>风险的价格：为什么有人借钱 3%，有人 12%</b>利率是一叠拆得开的账单，看不清的那部分按最坏的算，抵押品和征信能把它压下来。</div></div>
+      <div class="flow__n"><i>14</i><div><b>杠杆：金融世界的放大镜与绞肉机</b>杠杆不改变你的对错，只改变你能撑多久；放大收益和让你归零的是同一个数。</div></div>
+      <div class="flow__n"><i>15</i><div><b>衍生品：从农民的保险单到华尔街的赌桌</b>衍生品是切下来转手的风险，它是不是赌，取决于你身上原本有没有那份方向相反的风险。</div></div>
+      <div class="flow__n"><i>16</i><div><b>影子银行：管道之外的管道</b>影子银行做的是同一门生意，拿短钱做长事，只是出事时没有存款保险，也没有最后贷款人。</div></div>
+      <div class="flow__n"><i>17</i><div><b>泡沫与崩溃的通用剧本</b>泡沫要四个零件：真实的新故事、便宜的信贷、杠杆、新进场的人；故事通常是真的，错的是价格和时间表。</div></div>
+      <div class="flow__n"><i>18</i><div><b>周期：为什么好日子和坏日子会轮流来</b>周期不是钟表，是四五个不同长度的钟摆挂在一起；你能判断站在哪一段，算不出下一个拐点。</div></div>
+      <div class="flow__n"><i>19</i><div><b>给自己做一张资产负债表</b>净值是算出来的，不是感觉出来的；你表上最大的一笔资产是你自己，而它没上保险。</div></div>
+      <div class="flow__n"><i>20</i><div><b>收益从哪儿来：三种钱和一个残酷等式</b>你赚的每一块钱只有三个来路：经济增长、别人的口袋、被摩擦吃掉，后两种早晚找上你。</div></div>
+      <div class="flow__n"><i>21</i><div><b>资产配置：唯一的免费午餐</b>把不同步的东西放在一起，收益不减、波动变小，它的开关是相关性，不是数量。</div></div>
+      <div class="flow__n"><i>22</i><div><b>复利的真相，和关于复利的谎言</b>复利是乘法，怕中间有个特别小的数，更怕中间有个 0；所以先别出局，再谈收益。</div></div>
+      <div class="flow__n"><i>23</i><div><b>骗局的五个零件</b>骗局只有五个零件：看不懂的故事、又高又稳的承诺、紧迫、熟人、退出摩擦，认全了外壳随便换。</div></div>
+      <div class="flow__n"><i>24</i><div><b>2026：六个你必须知道的新变量</b>六件事同时在变天：AI 烧钱、支付重做、黄金上位、私募膨胀、利率上移、被动资金变巨兽。</div></div>
+      <div class="flow__n"><i>25</i><div><b>金融的本质，是陌生人之间的信任</b>金融是让陌生人敢签字的机器，技术换了六次，三个问题没换：谁承诺、凭什么信、出事谁兜底。</div></div>
+    </div>
+
+    <p>书里每个数字都标了 2026 年 8 月。两年后回来看，数字已经不对，但这一页没有一句依赖某个数字。数字当水位读，机制当河道读，河道不搬家。</p>
+
+    <div class="pull">大多数人研究钱的顺序是反的：先问买什么，最后才问钱从哪儿来。而骗局和危机，吃的都是这个顺序。</div>
+
+    <h3 id="ep-1-s4">如果只记住五件事</h3>
+
+    <p>这五条不是排在最前面的五章，是全书里最值钱的五个结论。它们的共同点：不需要任何背景，能直接压在一个具体决定上。</p>
+
+    <div class="takeaway">
+      <div class="box__t">如果只记住五件事</div>
+      <p>从上面二十六句里再蒸馏出五条。忘掉其余全部，也不会被骗，也能看懂新闻。</p>
+      <ul>
+        <li>任何“钱”都是某个人的负债。先问谁欠你、拿什么撑着，再谈别的。</li>
+        <li>钱是被银行借出来的，不是印出来的。大家愿意借，钱才变多；抢着还钱，钱就变少。</li>
+        <li>利率是全世界的除数。它一动，股票、房子、债券、你的月供一起重算。</li>
+        <li>高收益是风险的价格，不是善意。“又高又稳”四个字凑齐，基本是骗局。</li>
+        <li>你只有一条时间线。先保证不出局，再谈收益；储蓄率是唯一全归你管的变量。</li>
+      </ul>
+    </div>
+
+    <p>这五条不用记原文，记意思就够。真拿不准一笔钱，回到第一条：谁欠你，拿什么撑。</p>
+
+    <p>回到序章那个扫码的晚上。你扫了 98 块，老陈账上多 98，你账上少 98，什么都没变，又什么都变了：这一回，你看见了那 98 块接下来要去哪儿。</p>
+
+    <p>书到这里就完了。它没能让你多赚一分钱，也没打算。它只在往后的每一次扫码、每一次看新闻、每一次签合同里，多给你留了一秒钟的明白。</p>
+
+    <p>有这一秒，就够了。</p>
+
+    <p class="bridge"><b>下一篇</b>全书讲了二十六章钱怎么跑，却始终没教你发财。这不是漏了，是故意的。后记二《我们为什么从头到尾不谈发财》，说这件事。</p>
+
+  </div>
+</section>
+<nav class="chnav"><a class="chnav__a" href="ch-25.html"><span class="kicker">← 上一章</span><b>25 · 金融的本质，是陌生人之间的信任</b></a><a class="chnav__a chnav__a--nx" href="ep-2.html"><span class="kicker">下一章 →</span><b>II · 我们为什么从头到尾不谈发财</b></a></nav>
+</main>
+<div class="pill"><a href="ch-25.html" title="上一章"><svg viewBox="0 0 24 24"><path d="M15 5 8 12l7 7"/></svg></a><em id="pillTxt">本章 0%</em><a href="ep-2.html" title="下一章"><svg viewBox="0 0 24 24"><path d="m9 5 7 7-7 7"/></svg></a></div>
+<script src="assets/book.js"></script>
+<script src="assets/reader.js"></script>
+</body>
+</html>

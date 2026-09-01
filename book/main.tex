@@ -1,0 +1,103 @@
+% =============================================================================
+%  《钱是怎么跑起来的》—— 一本从零开始的金融世界说明书
+%  编译： xelatex main -> biber main -> makeindex main -> xelatex main x2
+%  或直接： latexmk -xelatex main.tex
+% =============================================================================
+\documentclass[
+  lang=cn,
+  scheme=chinese,
+  color=blue,
+  chinesefont=nofont,
+  mode=fancy,
+  math=newtx,
+  device=normal,
+  toc=onecol,
+  11pt,
+  a4paper,
+]{elegantbook}
+
+\input{style.tex}
+
+\addbibresource{refs.bib}
+\makeindex[title=索引, intoc=true, columns=2]
+
+\begin{document}
+
+% ================= 前置部分 =================
+\frontmatter
+\pagestyle{empty}
+\input{frontmatter/cover}
+\input{frontmatter/copyright}
+
+\pagestyle{bookmain}
+\tableofcontents
+\cleardoublepage
+
+\input{frontmatter/preface}
+
+% ================= 正文 =================
+\mainmatter
+\pagestyle{bookmain}
+
+\part{地基篇：钱到底是什么}
+\input{chapters/ch-00}
+\input{chapters/ch-01}
+\input{chapters/ch-02}
+\input{chapters/ch-03}
+\input{chapters/ch-04}
+\input{chapters/ch-05}
+\input{chapters/ch-06}
+
+\part{管道篇：这台机器怎么转}
+\input{chapters/ch-07}
+\input{chapters/ch-08}
+\input{chapters/ch-09}
+\input{chapters/ch-10}
+\input{chapters/ch-11}
+\input{chapters/ch-12}
+
+\part{天气篇：潮汐、风暴与泡沫}
+\input{chapters/ch-13}
+\input{chapters/ch-14}
+\input{chapters/ch-15}
+\input{chapters/ch-16}
+\input{chapters/ch-17}
+\input{chapters/ch-18}
+
+\part{落地篇：你在其中怎么活}
+\input{chapters/ch-19}
+\input{chapters/ch-20}
+\input{chapters/ch-21}
+\input{chapters/ch-22}
+\input{chapters/ch-23}
+\input{chapters/ch-24}
+\input{chapters/ch-25}
+
+% 后记不编号，但进目录
+\part{后记：合上书之后}
+\begingroup
+\let\ELEGANTchapter\chapter
+\renewcommand{\chapter}[1]{%
+  \ELEGANTchapter*{#1}%
+  \addcontentsline{toc}{chapter}{#1}%
+  \markboth{#1}{#1}}
+\input{chapters/ep-1}
+\input{chapters/ep-2}
+\input{chapters/ep-3}
+\endgroup
+
+% ================= 后置部分 =================
+\backmatter
+\appendix
+\part{附录}
+\input{backmatter/glossary}
+\input{backmatter/data}
+\input{backmatter/reading}
+
+\cleardoublepage
+\printbibliography[heading=bibintoc, title={参考文献与数据来源}]
+
+\cleardoublepage
+\printindex
+
+\end{document}

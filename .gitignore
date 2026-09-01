@@ -1,5 +1,26 @@
-# 构建与预览产物
+# 预览与构建产物
 _shot-*.png
 node_modules/
 .DS_Store
 Thumbs.db
+
+# LaTeX 中间文件
+book/*.aux
+book/*.log
+book/*.out
+book/*.toc
+book/*.idx
+book/*.ilg
+book/*.ind
+book/*.bbl
+book/*.bcf
+book/*.blg
+book/*.run.xml
+book/*.xdv
+book/*.fls
+book/*.fdb_latexmk
+book/*.synctex.gz
+book/pass*.log
+book/chapters/*.aux
+# 中文字体（约 76MB，用 node book/get-fonts.mjs 获取）
+book/fonts/*.otf

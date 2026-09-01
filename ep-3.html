@@ -1,0 +1,200 @@
+<!DOCTYPE html>
+<html lang="zh-CN" data-theme="light">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<meta name="theme-color" content="#F4F2ED">
+<meta name="description" content=" III AFTERWORD · 后记三 给读者的信 最后这几页不讲知识。讲点别的。 我不知道你是谁 可能你 23 岁，刚签完第一份劳动合同，HR 让你填公积金比例，你盯着那个空格不知道填多少，也不好意思问。 可能你 34 岁，房贷还了五年">
+<title>III 给读者的信 · 钱是怎么跑起来的</title>
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='7' fill='%2323407A'/%3E%3Ctext x='16' y='23' font-family='Georgia,serif' font-style='italic' font-size='19' fill='%23fff' text-anchor='middle'%3E%C2%A5%3C/text%3E%3C/svg%3E">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" media="print" onload="this.media='all'" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500&family=Newsreader:ital,wght@0,400;0,500;0,600;1,400;1,500;1,600&display=swap">
+<link rel="stylesheet" href="assets/style.css">
+<link rel="stylesheet" href="assets/reader.css">
+<script>try{var s=JSON.parse(localStorage.getItem(“hmm.prefs”)||“{}”),d=document.documentElement;if(s.theme)d.setAttribute(“data-theme”,s.theme);if(s.size)d.setAttribute(“data-size”,s.size);if(s.lh)d.setAttribute(“data-lh”,s.lh);if(s.width)d.setAttribute(“data-width”,s.width);if(s.font)d.setAttribute(“data-font”,s.font);}catch(e){}</script>
+</head>
+<body class="is-chapter" data-chapter="ep-3">
+<div class="progress"></div>
+<header class="rbar">
+  <button class="rbtn" data-act="toc" title="目录 (T)" aria-label="目录"><svg viewBox="0 0 24 24"><path d="M4 6h16M4 12h16M4 18h10"/></svg></button>
+  <a class="rbtn" href="index.html" title="回到书架"><svg viewBox="0 0 24 24"><path d="M3 10.5 12 4l9 6.5V20a1 1 0 0 1-1 1h-5v-6H9v6H4a1 1 0 0 1-1-1z"/></svg></a>
+  <div class="rbar__title">III · 给读者的信</div>
+  <button class="rbtn" data-act="find" title="搜索全书 (F)" aria-label="搜索"><svg viewBox="0 0 24 24"><circle cx="11" cy="11" r="7"/><path d="m20 20-3.5-3.5"/></svg></button>
+  <button class="rbtn rbtn--mark" data-act="mark" title="加入书签 (B)" aria-label="书签"><svg viewBox="0 0 24 24"><path d="M6 3h12v18l-6-4.5L6 21z"/></svg></button>
+  <button class="rbtn" data-act="prefs" title="阅读设置 (S)" aria-label="设置"><b>Aa</b></button>
+</header>
+<div class="scrim" data-act="close"></div>
+<aside class="drawer" id="drawer" aria-hidden="true">
+  <div class="drawer__tabs">
+    <button class="dtab is-on" data-tab="toc">目录</button>
+    <button class="dtab" data-tab="sec">本章</button>
+    <button class="dtab" data-tab="mark">书签</button>
+    <button class="dtab" data-tab="find">搜索</button>
+    <button class="rbtn drawer__x" data-act="close" aria-label="关闭"><svg viewBox="0 0 24 24"><path d="M6 6l12 12M18 6 6 18"/></svg></button>
+  </div>
+  <div class="drawer__body">
+    <div class="dpane is-on" data-pane="toc"></div>
+    <div class="dpane" data-pane="sec"></div>
+    <div class="dpane" data-pane="mark"></div>
+    <div class="dpane" data-pane="find"><div class="find"><input type="search" id="q" placeholder="搜索全书正文…" autocomplete="off" spellcheck="false"><div class="find__out"></div></div></div>
+  </div>
+</aside>
+<aside class="prefs" id="prefs" aria-hidden="true">
+  <div class="prefs__row"><span>主题</span><div class="seg" data-pref="theme"><button data-v="light">日间</button><button data-v="sepia">米黄</button><button data-v="dark">夜间</button></div></div>
+  <div class="prefs__row"><span>字号</span><div class="seg" data-pref="size"><button data-v="xs">小</button><button data-v="s">较小</button><button data-v="m">标准</button><button data-v="l">较大</button><button data-v="xl">大</button></div></div>
+  <div class="prefs__row"><span>行距</span><div class="seg" data-pref="lh"><button data-v="tight">紧凑</button><button data-v="normal">标准</button><button data-v="loose">宽松</button></div></div>
+  <div class="prefs__row"><span>版心</span><div class="seg" data-pref="width"><button data-v="narrow">窄</button><button data-v="normal">标准</button><button data-v="wide">宽</button></div></div>
+  <div class="prefs__row"><span>正文字体</span><div class="seg" data-pref="font"><button data-v="sans">黑体</button><button data-v="serif">宋体</button></div></div>
+  <div class="prefs__foot"><b>←</b> <b>→</b> 翻章 · <b>T</b> 目录 · <b>B</b> 书签 · <b>F</b> 搜索 · <b>S</b> 设置 · <b>Esc</b> 关闭</div>
+</aside>
+<div class="toast" id="toast"></div>
+<main class="page">
+<div class="page__meta"><a class="kicker" href="part-5.html">卷 05 · 后记</a><span class="kicker">2,040 字 · 约 5 分钟</span></div>
+<section class="chapter" id="ep-3">
+  <div class="ch-head">
+    <div class="ch-head__top">
+      <span class="ch-num">III</span>
+      <span class="kicker">AFTERWORD · 后记三</span>
+    </div>
+    <h2 class="ch-title">给读者的信</h2>
+    <p class="ch-lede">最后这几页不讲知识。讲点别的。</p>
+  </div>
+
+  <div class="ch-body">
+
+    <h3 id="ep-3-s1">我不知道你是谁</h3>
+
+    <p>可能你 23 岁，刚签完第一份劳动合同，HR 让你填公积金比例，你盯着那个空格不知道填多少，也不好意思问。</p>
+
+    <p>可能你 34 岁，房贷还了五年，最近每天晚上算提前还贷划不划算，算到十二点还没算明白，第二天又接着算。</p>
+
+    <p>可能你 41 岁，公司上个月做了一轮优化，你没被优化，但你第一次很认真地想了一个问题：如果下一轮是我呢。</p>
+
+    <p>可能你 58 岁，退休金刚开始发，银行客户经理这半年对你格外热情，每次去都要拉你坐下聊十分钟。</p>
+
+    <p>也可能你只是刷到了这本书，本来打算看两段就关掉，结果不知怎么看到了第 7 章，发现自己活了这么多年，居然一直搞错了钱是从哪儿来的。</p>
+
+    <p>这五个人的处境差得很远。但他们面对的是同一台机器。</p>
+
+    <p>这本书是写给这台机器里的人的。</p>
+
+    <h3 id="ep-3-s2">三件我希望你带走的东西</h3>
+
+    <p><strong>第一件，一副眼镜。</strong></p>
+
+    <p>资产 = 负债 + 净值。一个人的资产，是另一个人的负债。</p>
+
+    <p>这两句话看起来像会计课的开头，实际上是这本书里最锋利的工具。学会了它，你看新闻的方式会永久地变掉：听到“全球债务 353 万亿美元”，你会下意识地问一句，那这 353 万亿是谁的资产？听到“银行放水”，你会问，钱进了谁的账户，又是谁的负债增加了？</p>
+
+    <p>问出这句话的人，和没问出这句话的人，看到的是两个世界。</p>
+
+    <p><strong>第二件，三个问题。</strong></p>
+
+    <div class="pull">
+      谁在承诺？凭什么信他？出事了谁兜底？
+      <cite>雅浦岛的石头到链上的稳定币，四千年里这三句没换过</cite>
+    </div>
+
+    <p>以后每出现一个新东西，你不需要先弄懂它的技术细节。先问这三句。三句问完，它在你心里的位置就基本定了。</p>
+
+    <p>这三句话大概是这本书里保质期最长的部分。等到 2035 年，书里那些利率、汇率、储备占比全都不对了，这三句还对。</p>
+
+    <p><strong>第三件，一种和不确定性相处的舒服感。</strong></p>
+
+    <p>这本书里至少有五处写着“目前没人知道答案”。AI 会不会真的提高生产率，2% 是不是最优的通胀目标，被动投资的临界点在哪儿，加密资产最终变成什么。</p>
+
+    <p>刚开始读的时候，这种话可能让你不舒服。你是来找答案的。</p>
+
+    <p>但一个能坦然说出“这件事没人知道”的人，比一个什么都有答案的人，在真实世界里活得稳得多。因为骗你的人从不说这句话，他们的答案总是很完整。</p>
+
+    <h3 id="ep-3-s3">一件我希望你别带走的</h3>
+
+    <p>一种新的傲慢。</p>
+
+    <p>懂了一点之后最容易犯的毛病，是觉得那些还不懂的人很蠢，是觉得自己从此不会栽跟头了。</p>
+
+    <p>提醒一句：2008 年之前，全世界最懂金融的那批人，就聚在一起，造出了那场危机。他们不是不懂，他们比谁都懂。知识没能拦住他们，因为知识拦不住激励。每个人都在按自己的奖金规则做最优选择，加起来就是灾难。</p>
+
+    <p>所以懂了之后真正该增加的不是自信，是两样别的东西：对自己判断的怀疑，和对“我这样做是因为谁在付我钱”这个问题的敏感。</p>
+
+    <h3 id="ep-3-s4">如果你现在手头很紧</h3>
+
+    <p>这本书默认了一件事：你有一点可以支配的钱。</p>
+
+    <p>我知道不是所有人都有。</p>
+
+    <p>如果你现在的状态是每个月都不太够，那对你最有用的不是第 21 章的资产配置，那一章你可以先跳过。对你最有用的是第 19 章里“储蓄率是你唯一能完全控制的变量”这半页，和整个第 23 章。</p>
+
+    <p>因为钱少的时候，被拿走一次的代价，比钱多的时候大得多。三万块对一个有三百万的人是 1%，对一个有五万块的人是半条命。</p>
+
+    <p>骗子最偏爱的从来不是有钱人。有钱人身边有一堆人替他把关。</p>
+
+    <p>这一段是这本书里我最希望被读到的一段。</p>
+
+    <h3 id="ep-3-s5">关于“引路人”这三个字</h3>
+
+    <p>这本书不能替你走路。</p>
+
+    <p>它能做的事情小得多：在你已经走了很多年、以后还要接着走的那条路上，装了几盏灯。</p>
+
+    <p>灯照得不远。它照不到十年后的利率，照不到你们行业还剩几年好光景，照不到你父母的身体和你孩子的运气。再往前的路仍然是黑的，所有人的都黑，包括写这本书的人和管着几万亿的人。</p>
+
+    <p>灯只做一件事：让你看清脚下这几米有没有坑。</p>
+
+    <p>而人生里那些真正把人绊倒的坑，大部分就在脚下这几米。不在远处。</p>
+
+    <h3 id="ep-3-s6">接下来这一周，三件小事</h3>
+
+    <p>不是作业。是这本书唯一一次请你动手。</p>
+
+    <div class="flow">
+      <div class="flow__n"><i>01</i><div><b>花二十分钟，把自己的表填出来</b>打开你的银行 App、公积金账户、基金账户，按第 19 章的样子列一张：左边资产，右边负债，中间那个差额就是你的净值。不用给任何人看，写在手机备忘录里就行。大多数人活一辈子没做过这件事，而它只需要二十分钟。</div></div>
+      <div class="flow__n"><i>02</i><div><b>翻出你的房贷合同或者租房合同</b>找到利率那一页，看清楚三件事：加了多少个基点、重定价日是哪一天、提前还款有没有违约金。如果你还没有贷款，那就看看你手里那笔存款或者理财的实际年化，再拿它跟当月的通胀比一比。</div></div>
+      <div class="flow__n"><i>03</i><div><b>挑一句最反直觉的，讲给一个人听</b>比如“银行放贷的时候，钱才被创造出来”。讲的过程中你会卡壳，卡壳的地方就是你还没真懂的地方。回去把那一章再看一遍。这是检验理解最便宜的办法。</div></div>
+    </div>
+
+    <h3 id="ep-3-s7">最后</h3>
+
+    <p>写这本书的过程里，我一直在想一个问题：一个普通人，花十来个小时读完十万字，到底能换到什么。</p>
+
+    <p>答案可能没有想象中那么壮观。</p>
+
+    <p>你不会因此变富。你的房子不会涨回来。你也拦不住下一次危机，那件事谁都拦不住。</p>
+
+    <p>你换到的只是：在往后每一次刷到财经新闻、每一次坐在客户经理对面、每一次在合同上签字的时候，脑子里多出来的那一两秒钟。</p>
+
+    <p>那一两秒里，你会想起来问一句“这钱从哪儿来”。</p>
+
+    <p>就是这个。</p>
+
+    <div class="sep"><i>§</i></div>
+
+    <p>某个周五晚上，你大概还是会在楼下点两个菜一碗汤。手机叮一声。</p>
+
+    <p>那一声，和你读这本书之前的每一声，听起来一模一样。</p>
+
+    <p>只有你知道，它已经不一样了。</p>
+
+    <p>路还长。慢慢走。</p>
+
+    <div class="takeaway">
+      <div class="box__t">带走这三样就够</div>
+      <p>一副眼镜：资产等于负债加净值，一个人的资产是另一个人的负债。三个问题：谁在承诺，凭什么信他，出事了谁兜底。一种舒服：能坦然说出“这件事没人知道”。</p>
+      <ul>
+        <li>别带走傲慢。2008 年之前最懂金融的那批人，正是造出那场危机的人。</li>
+        <li>钱越少，被拿走一次的代价越大。手头紧的时候，第 23 章比第 21 章重要。</li>
+        <li>这本书装的是脚下几米的灯，不是远方的地图。而绊倒人的坑大多在脚下几米。</li>
+      </ul>
+    </div>
+
+    <p class="bridge"><b>接下来</b>附录里是术语速查和 2026 年 8 月的数据快照。前者用来查，后者留着两年后回头对照，看看哪些变了，哪些其实一直没变。</p>
+
+  </div>
+</section>
+<nav class="chnav"><a class="chnav__a" href="ep-2.html"><span class="kicker">← 上一章</span><b>II · 我们为什么从头到尾不谈发财</b></a><a class="chnav__a chnav__a--nx" href="glossary.html"><span class="kicker">附录 →</span><b>术语速查 &amp; 2026 数据快照</b></a></nav>
+</main>
+<div class="pill"><a href="ep-2.html" title="上一章"><svg viewBox="0 0 24 24"><path d="M15 5 8 12l7 7"/></svg></a><em id="pillTxt">本章 0%</em><span class="off"><svg viewBox="0 0 24 24"><path d="m9 5 7 7-7 7"/></svg></span></div>
+<script src="assets/book.js"></script>
+<script src="assets/reader.js"></script>
+</body>
+</html>

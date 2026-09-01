@@ -1,0 +1,288 @@
+% =============================================================================
+%  《钱是怎么跑起来的》—— 排版样式层
+%  在 ElegantBook v4.7 之上，重建网页版的全部内容组件
+% =============================================================================
+
+\usepackage{ifthen}
+\usepackage{array}
+\usepackage{booktabs}
+\usepackage{xltabular}
+\usepackage{enumitem}
+\usepackage{ragged2e}
+\usepackage{needspace}
+\usepackage{multicol}
+\usepackage{imakeidx}
+
+\tcbuselibrary{skins,breakable,raster}
+
+% ---------- 颜色系统（与网页版一致） ----------
+\definecolor{inkblue}{HTML}{23407A}
+\definecolor{inkblued}{HTML}{1B3260}
+\definecolor{inkwarm}{HTML}{8A5A24}
+\definecolor{inkbody}{HTML}{16181D}
+\definecolor{inkgray}{HTML}{5A5F68}
+\definecolor{inkfaint}{HTML}{8B9098}
+\definecolor{tintblue}{HTML}{EFF2F8}
+\definecolor{tintwarm}{HTML}{F8F2E9}
+\definecolor{tintgray}{HTML}{F4F3F0}
+\definecolor{rulegray}{HTML}{D8D6D0}
+\definecolor{ruledark}{HTML}{B9B6AE}
+
+% ---------- 中文字体：思源宋体 / 思源黑体 / 楷体 ----------
+\setCJKmainfont[
+  Path        = ./fonts/,
+  Extension   = .otf,
+  UprightFont = *-Regular,
+  BoldFont    = *-Bold,
+  ItalicFont  = *-Regular,
+  BoldItalicFont = *-Bold,
+]{NotoSerifSC}
+\setCJKsansfont[
+  Path        = ./fonts/,
+  Extension   = .otf,
+  UprightFont = *-Regular,
+  BoldFont    = *-Bold,
+]{NotoSansSC}
+\setCJKmonofont[
+  Path        = ./fonts/,
+  Extension   = .otf,
+  UprightFont = *-Regular,
+  BoldFont    = *-Bold,
+]{NotoSansSC}
+\newCJKfontfamily[kai]\kaishu{KaiTi}[AutoFakeBold=2.5]
+\newCJKfontfamily[light]\cnlight[Path=./fonts/, Extension=.otf, UprightFont=*-Light, BoldFont=*-Regular]{NotoSerifSC}
+\newCJKfontfamily[sansmed]\cnsansmed[Path=./fonts/, Extension=.otf, UprightFont=*-Medium, BoldFont=*-Bold]{NotoSansSC}
+
+% ---------- 版心：A4，书籍式双面 ----------
+\geometry{
+  a4paper,
+  inner        = 3.0cm,
+  outer        = 3.6cm,
+  top          = 2.9cm,
+  bottom       = 3.4cm,
+  headsep      = 12pt,
+  footskip     = 26pt,
+  marginparsep = 8pt,
+  marginparwidth = 2.0cm,
+}
+\linespread{1.42}
+\setlength{\parskip}{0.30em plus 0.10em minus 0.05em}
+\setlength{\emergencystretch}{2em}
+\clubpenalty=9000
+\widowpenalty=9000
+\displaywidowpenalty=9000
+\brokenpenalty=6000
+\tolerance=1800
+\hbadness=2500
+
+% ---------- 基础排字 ----------
+\ctexset{
+  punct        = quanjiao,
+  space        = auto,
+  autoindent   = true,
+}
+\renewcommand{\baselinestretch}{1.0}
+
+% ---------- 小工具 ----------
+\newcommand{\kicker}[1]{{\sffamily\scriptsize\color{inkfaint}#1}}
+\newcommand{\thead}[1]{{\sffamily\scriptsize\bfseries\color{inkgray}#1}}
+\newcommand{\chaptermeta}[1]{}
+\newcommand{\hlmark}[1]{\textbf{\color{inkblue}#1}}
+\newcommand{\hlwarm}[1]{\textbf{\color{inkwarm}#1}}
+\newcommand{\term}[2]{%
+  \textbf{\color{inkblued}#1}%
+  \ifthenelse{\equal{#2}{}}{}{\,{\footnotesize\itshape\color{inkgray}#2}}%
+}
+
+% 章节之间的静默分隔
+\newcommand{\bookbreak}{%
+  \par\addvspace{16pt}%
+  \noindent\hbox to \linewidth{\hfil{\color{ruledark}\footnotesize$\S$}\hfil}%
+  \par\addvspace{16pt}}
+
+% 盒子内的小标签
+\newcommand{\boxlabel}[2]{%
+  \ifthenelse{\equal{#2}{}}{}{%
+    {\sffamily\bfseries\scriptsize\color{#1}%
+     \raisebox{0.28ex}{\rule{1.05em}{0.55pt}}\hspace{0.55em}#2\par}%
+    \vspace{5pt}}}
+
+% ---------- 内容盒子 ----------
+\tcbset{bookbox/.style={
+  enhanced, breakable, boxrule=0pt, arc=1.2pt, sharp corners=northwest,
+  left=11pt, right=11pt, top=10pt, bottom=10pt,
+  before skip=13pt, after skip=13pt,
+  colframe=white, fontupper=\small,
+  parbox=false,
+}}
+
+\newtcolorbox{egbox}[1]{bookbox, colback=tintblue,
+  borderline west={2.2pt}{0pt}{inkblue},
+  before upper={\boxlabel{inkblue}{#1}}}
+
+\newtcolorbox{mythbox}[1]{bookbox, colback=tintwarm,
+  borderline west={2.2pt}{0pt}{inkwarm},
+  before upper={\boxlabel{inkwarm}{#1}}}
+
+\newtcolorbox{databox}[1]{bookbox, colback=tintgray,
+  borderline west={2.2pt}{0pt}{inkgray},
+  before upper={\boxlabel{inkgray}{#1}}}
+
+\newtcolorbox{warnbox}[1]{bookbox, colback=tintwarm, boxrule=0.5pt, colframe=inkwarm!35,
+  borderline west={2.2pt}{0pt}{inkwarm},
+  before upper={\boxlabel{inkwarm}{#1}}}
+
+\newtcolorbox{deepbox}[1]{bookbox, colback=white, boxrule=0.5pt, colframe=rulegray,
+  before upper={\boxlabel{inkfaint}{#1}}}
+
+\newtcolorbox{notebox}[1]{bookbox, colback=tintgray,
+  before upper={\boxlabel{inkgray}{#1}}}
+
+\newtcolorbox{takeaway}[1]{bookbox, colback=tintblue, boxrule=0.6pt, colframe=inkblue!28,
+  arc=3pt, sharp corners=false, left=13pt, right=13pt, top=11pt, bottom=11pt,
+  fontupper=\normalsize,
+  before upper={\boxlabel{inkblue}{#1}}}
+
+% 误解 → 事实
+\newcommand{\mvfrow}[2]{%
+  \par\addvspace{4pt}%
+  {\sffamily\bfseries\scriptsize\color{inkwarm}#1}\par\nopagebreak\vspace{2pt}#2\par
+  \addvspace{4pt}}
+
+% ---------- 导语 / 引语 / 过桥 ----------
+\newtcolorbox{ledetext}{bookbox, colback=white,
+  left=13pt, right=0pt, top=3pt, bottom=3pt,
+  borderline west={2pt}{0pt}{inkblue},
+  fontupper=\kaishu\color{inkgray}}
+
+\newtcolorbox{pullquote}[1]{bookbox, colback=white,
+  left=15pt, right=6pt, top=7pt, bottom=7pt,
+  borderline west={2.8pt}{0pt}{inkblue},
+  fontupper=\large\bfseries\color{inkbody},
+  after upper={\ifthenelse{\equal{#1}{}}{}{%
+    \par\vspace{7pt}{\normalfont\sffamily\scriptsize\color{inkfaint}#1}}}}
+
+\newtcolorbox{bridgebox}{bookbox, colback=white,
+  left=0pt, right=0pt, top=9pt, bottom=0pt,
+  borderline north={0.4pt}{0pt}{rulegray},
+  fontupper=\small\color{inkgray}}
+
+% ---------- 数字组 ----------
+\newlength{\statwd}
+\newenvironment{statrow}[1]{%
+  \par\addvspace{13pt}%
+  \setlength{\statwd}{\dimexpr(\linewidth - 1.6em)/#1\relax}%
+  \noindent{\color{rulegray}\rule{\linewidth}{0.5pt}}\par\vspace{8pt}%
+  \noindent\ignorespaces}
+  {\par\vspace{8pt}\noindent{\color{rulegray}\rule{\linewidth}{0.5pt}}\par\addvspace{13pt}}
+\newcommand{\statitem}[3]{%
+  \begin{minipage}[t]{\statwd}%
+    \raggedright
+    {\fontsize{19}{21}\selectfont\bfseries\color{inkblue}#1}%
+    \ifthenelse{\equal{#2}{}}{}{{\footnotesize\bfseries\color{inkgray}#2}}%
+    \par\vspace{4pt}
+    {\scriptsize\color{inkgray}\setlength{\baselineskip}{1.25\baselineskip}#3\par}%
+  \end{minipage}\hfill\ignorespaces}
+
+% ---------- 编号流程 ----------
+\newif\ifflowfirst
+\newenvironment{flowlist}{%
+  \par\addvspace{12pt}\begingroup\small\setlength{\parindent}{0pt}\flowfirsttrue}
+  {\endgroup\par\addvspace{12pt}}
+\newcommand{\flowitem}[3]{%
+  \ifflowfirst\flowfirstfalse\else
+    \vspace{6pt}\noindent{\color{rulegray}\rule{\linewidth}{0.4pt}}\par\vspace{6pt}\fi
+  \noindent
+  \begin{minipage}[t]{2.3em}\raggedright{\sffamily\scriptsize\color{inkblue}#1}\end{minipage}%
+  \begin{minipage}[t]{\dimexpr\linewidth-2.5em\relax}%
+    \ifthenelse{\equal{#2}{}}{}{{\bfseries #2}\par\vspace{1pt}}#3%
+  \end{minipage}\par}
+
+% ---------- 链条 ----------
+\newenvironment{chainflow}{%
+  \par\addvspace{12pt}\begingroup\footnotesize\sffamily\setlength{\parindent}{0pt}%
+  \raggedright\color{inkgray}}
+  {\par\endgroup\addvspace{12pt}}
+\newcommand{\chainnode}[1]{%
+  \tcbox[on line, boxrule=0.4pt, colframe=rulegray, colback=tintgray,
+         arc=1.5pt, left=4pt, right=4pt, top=1.5pt, bottom=1.5pt,
+         box align=base]{#1}\allowbreak}
+\newcommand{\chainarrow}{\hspace{2.5pt}\raisebox{0.15ex}{$\rightarrow$}\hspace{2.5pt}\allowbreak}
+
+% ---------- 表格 ----------
+\newenvironment{tablewrap}{%
+  \par\addvspace{13pt}\begingroup
+  \footnotesize\setlength{\tabcolsep}{7pt}\renewcommand{\arraystretch}{1.42}%
+  \setlength{\parskip}{0pt}\setlength{\LTpre}{0pt}\setlength{\LTpost}{0pt}}
+  {\endgroup\par\addvspace{13pt}}
+\newenvironment{tablewrapin}{%
+  \par\addvspace{7pt}\begingroup
+  \setlength{\tabcolsep}{5pt}\renewcommand{\arraystretch}{1.32}%
+  \setlength{\parskip}{0pt}}
+  {\endgroup\par\addvspace{7pt}}
+
+% ---------- 资产负债表 ----------
+\newenvironment{bsheet}{%
+  \par\addvspace{13pt}%
+  \begin{tcbraster}[raster columns=2, raster equal height=rows,
+    raster column skip=7pt, raster left skip=0pt, raster right skip=0pt]}
+  {\end{tcbraster}\par\addvspace{13pt}}
+\newtcolorbox{bssidebox}[1]{%
+  enhanced, boxrule=0.5pt, colframe=rulegray, colback=tintgray, arc=1.2pt,
+  left=9pt, right=9pt, top=8pt, bottom=8pt, fontupper=\footnotesize,
+  before upper={{\sffamily\bfseries\scriptsize\color{inkgray}#1\par}\vspace{5pt}}}
+\newcommand{\bsside}[2]{\begin{bssidebox}{#1}#2\end{bssidebox}}
+\newcommand{\bsrow}[2]{%
+  \par\noindent#1\hfill #2\par\vspace{2pt}%
+  \noindent{\color{rulegray}\rule{\linewidth}{0.3pt}}\par\vspace{2pt}}
+\newcommand{\bsrowtotal}[2]{%
+  \par\vspace{1pt}\noindent{\color{ruledark}\rule{\linewidth}{0.7pt}}\par\vspace{3pt}%
+  \noindent\textbf{#1}\hfill\textbf{#2}\par}
+
+% ---------- 对话 ----------
+\newtcolorbox{talkbox}{bookbox, colback=white,
+  left=13pt, right=0pt, top=6pt, bottom=6pt,
+  borderline west={0.8pt}{0pt}{ruledark}, fontupper=\small}
+\newcommand{\talkline}[2]{%
+  \par\noindent{\sffamily\bfseries\scriptsize\color{inkfaint}#1}\hspace{0.7em}#2\par\vspace{4pt}}
+
+% ---------- 条形图 ----------
+\newenvironment{barfig}{%
+  \par\addvspace{12pt}\begingroup\footnotesize\setlength{\parindent}{0pt}}
+  {\endgroup\par\addvspace{12pt}}
+\newcommand{\barrow}[3]{%
+  \par\noindent\makebox[7em][l]{#1}%
+  \makebox[0.5\linewidth][l]{%
+    {\color{tintgray}\rule[-0.15ex]{0.5\linewidth}{8pt}}%
+    \hspace{-0.5\linewidth}%
+    {\color{inkblue}\rule[-0.15ex]{\dimexpr0.005\linewidth*#2\relax}{8pt}}}%
+  \hfill\makebox[3.6em][r]{\bfseries #3}\par\vspace{5pt}}
+
+% ---------- 章标题微调 ----------
+\setlist[itemize]{leftmargin=1.5em, itemsep=2pt, topsep=5pt, parsep=0pt}
+\setlist[enumerate]{leftmargin=1.8em, itemsep=2pt, topsep=5pt, parsep=0pt}
+
+% ---------- 页眉页脚 ----------
+\fancypagestyle{bookmain}{%
+  \fancyhf{}
+  \fancyhead[LE]{\kicker{钱是怎么跑起来的}}
+  \fancyhead[RO]{\kicker{\nouppercase{\leftmark}}}
+  \fancyfoot[C]{\footnotesize\color{inkgray}\thepage}
+  \renewcommand{\headrulewidth}{0.4pt}
+  \renewcommand{\footrulewidth}{0pt}}
+
+% ---------- 术语表 ----------
+\newcommand{\glossletter}[1]{%
+  \par\addvspace{10pt}%
+  \noindent{\sffamily\bfseries\normalsize\color{inkblue}#1}%
+  \hspace{6pt}{\color{rulegray}\leaders\hrule height 0.5pt\hfill}\par\vspace{5pt}}
+\newcommand{\glossitem}[4]{%
+  \par\addvspace{4pt}\noindent
+  \textbf{\color{inkblued}#1}%
+  \ifthenelse{\equal{#2}{}}{}{\,{\footnotesize\itshape\color{inkgray}#2}}%
+  \ifthenelse{\equal{#4}{}}{}{\hfill{\sffamily\scriptsize\color{inkfaint}第 #4 章}}%
+  \par\vspace{1pt}
+  {\footnotesize\color{inkgray}#3\par}
+  \vspace{3pt}\noindent{\color{rulegray}\rule{\linewidth}{0.3pt}}\par}
+\setlength{\columnsep}{22pt}
+\setlength{\columnseprule}{0pt}

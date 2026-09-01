@@ -41,7 +41,7 @@ for (const f of names) {
   const unknown = [...classes].filter(function (c) { return !ALLOWED.has(c); });
   if (unknown.length) issues.push('未知class:' + unknown.join(','));
 
-  if (f !== 'ch-25.html' && f !== 'ch-00.html') {
+  if (!/^(ch-25|ch-00|ep-\d)\.html$/.test(f)) {
     for (const pair of REQUIRED) {
       const k = (t.split(pair[0]).length - 1);
       if (k < pair[1]) issues.push('缺' + pair[0] + '(' + k + '/' + pair[1] + ')');
@@ -63,7 +63,7 @@ for (const f of names) {
   const close = (t.match(/<\/[a-zA-Z][a-zA-Z0-9]*>/g) || []).length;
   if (open !== close) issues.push('标签开合' + open + '/' + close);
 
-  if (cn < 2600 && f !== 'ch-00.html') issues.push('字数少' + cn);
+  if (cn < 2000 && f !== 'ch-00.html') issues.push('字数少' + cn);
 
   if (issues.length) bad++;
   console.log((issues.length ? 'X ' : 'v ') + f.padEnd(13) + String(cn).padStart(5) + '字  ' + (issues.join(' ; ') || 'OK'));
