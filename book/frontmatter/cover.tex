@@ -1,14 +1,13 @@
-% ---------- 封面：整幅（出血底色取自封面边缘，视觉上等同满版） ----------
+% ---------- 封面：整幅，严格一页 ----------
+% 用页面背景层放置，避免图片高度与版心冲突而多吐一页
 \input{cover-bg.tex}
 \newgeometry{margin=0pt}
 \pagecolor{coverbg}
 \thispagestyle{empty}
-\begingroup
-\setlength{\parindent}{0pt}\setlength{\parskip}{0pt}\setlength{\topskip}{0pt}
-\vspace*{0pt}
-\noindent\makebox[\linewidth][c]{%
-  \includegraphics[width=\paperwidth,height=\paperheight,keepaspectratio]{cover-art.png}}
-\endgroup
+\AddToShipoutPictureBG*{%
+  \AtPageCenter{\makebox(0,0){%
+    \includegraphics[width=\paperwidth,height=\paperheight,keepaspectratio]{cover-art.png}}}}
+\null
 \clearpage
 \pagecolor{white}
 \restoregeometry
