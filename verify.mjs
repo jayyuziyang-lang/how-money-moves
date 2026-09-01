@@ -5,7 +5,7 @@ import { join } from 'node:path';
 
 const CHROME = 'C:\\Users\\91615\\AppData\\Local\\Google\\Chrome\\Application\\chrome.exe';
 const PORT = 9333;
-const BASE = process.argv[2] || 'http://127.0.0.1:8791';
+const BASE = process.argv[2] || 'http://127.0.0.1:8795';
 const profile = mkdtempSync(join(tmpdir(), 'hmm-verify-'));
 
 const child = spawn(CHROME, [
@@ -106,8 +106,8 @@ const a = await evalJS(`(function(){
 out.push('--- 章节页 ch-07 ---');
 ok('视口正常', a.vw > 1000, a.vw + 'x' + a.vh);
 ok('无横向溢出', !a.overflow);
-ok('book.js 已加载 26 章', a.chapters === 26, a.chapters + ' 章');
-ok('目录抽屉渲染', a.toc === 27, a.toc + ' 项');
+ok('book.js 已加载 29 篇', a.chapters === 29, a.chapters + ' 篇');
+ok('目录抽屉渲染', a.toc === 30, a.toc + ' 项');
 ok('本章小节渲染', a.sec === 7, a.sec + ' 节');
 ok('上/下一章导航', a.chnav === 2);
 ok('底部浮动进度条', a.pill);
@@ -190,7 +190,7 @@ const c = await evalJS(`new Promise(function(res){
   },120);
 })`);
 out.push('--- 全书搜索 ---');
-ok('搜索索引懒加载成功', c.idx === 26, c.idx + ' 章索引');
+ok('搜索索引懒加载成功', c.idx === 29, c.idx + ' 篇索引');
 ok('搜索「货币乘数」有结果', c.n > 0, c.n + ' 条，首条：' + c.first);
 ok('结果高亮关键词', c.mark);
 ok('结果可跳转到小节锚点', /ch-\d+\.html/.test(c.href || ''), c.href);
@@ -218,8 +218,8 @@ const e = await evalJS(`(function(){
   return r;
 })()`);
 out.push('--- 首页 ---');
-ok('四卷卡片', e.parts === 4);
-ok('26 个章节入口', e.chLinks === 26, e.chLinks + ' 个');
+ok('五卷卡片', e.parts === 5, e.parts + ' 卷');
+ok('29 个篇目入口', e.chLinks === 29, e.chLinks + ' 个');
 ok('阅读统计条', e.stat === 4, e.statTxt);
 ok('续读按钮已更新', /继续阅读|接着读/.test(e.resume), e.resume);
 ok('章节读过状态回显', e.marked > 0, e.marked + ' 章有进度标记');

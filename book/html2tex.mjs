@@ -104,6 +104,7 @@ function inline(n) {
         const zh = clean((n.kids || []).filter((k) => !(k.tag === 'span' && has(k, 'tt'))).map(plain).join(''));
         const en = tt ? clean(plain(tt)) : '';
         if (zh) terms.add(zh + '\u0001' + en);
+        if (!zh) return en ? '\\enterm{' + esc(en) + '}' : '';
         const key = INDEXKEY.get(zh);
         return '\\term{' + esc(zh) + '}{' + esc(en) + '}' + (key ? '\\index{' + key + '@' + zh + '}' : '');
       }
@@ -287,16 +288,21 @@ function table(t) {
   for (let c = 0; c < ncol; c++) {
     numCol.push((heads[c] && has(heads[c], 'n')) || rows.some((r) => r[c] && has(r[c], 'n')));
   }
-  let spec = '';
+  const cols = [];
   for (let c = 0; c < ncol; c++) {
-    if (numCol[c]) spec += 'r';
-    else if (c === 0 && ncol > 2) spec += '>{\\raggedright\\arraybackslash}p{0.20\\linewidth}';
-    else spec += 'X';
+    if (numCol[c]) cols.push('r');
+    else if (c === 0 && ncol > 2) cols.push('>{\\raggedright\\arraybackslash}p{0.20\\linewidth}');
+    else cols.push('X');
   }
+  if (cols.indexOf('X') < 0) {
+    const k = cols.findIndex((x) => x !== 'r');
+    cols[k >= 0 ? k : 0] = 'X';
+  }
+  const spec = cols.join('');
   const env = inBox ? 'tabularx' : 'xltabular';
   const wrap = inBox ? 'tablewrapin' : 'tablewrap';
   let out = '\n\\begin{' + wrap + '}\n\\begin{' + env + '}{\\linewidth}{' + spec + '}\n';
-  if (heads.length) out += '\\toprule\n' + heads.map((h) => '\\thead{' + inlineKids(h) + '}').join(' & ') + ' \\\\\n\\midrule\n';
+  if (heads.length) out += '\\toprule\n' + heads.map((h) => '\\bthead{' + inlineKids(h) + '}').join(' & ') + ' \\\\\n\\midrule\n';
   else out += '\\toprule\n';
   out += rows.map((r) => {
     const cells = [];

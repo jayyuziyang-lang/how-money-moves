@@ -4,6 +4,8 @@
 % =============================================================================
 
 \usepackage{ifthen}
+\usepackage{etoolbox}
+\usepackage{metalogo}
 \usepackage{array}
 \usepackage{booktabs}
 \usepackage{xltabular}
@@ -85,13 +87,13 @@
 
 % ---------- 小工具 ----------
 \newcommand{\kicker}[1]{{\sffamily\scriptsize\color{inkfaint}#1}}
-\newcommand{\thead}[1]{{\sffamily\scriptsize\bfseries\color{inkgray}#1}}
+\newcommand{\bthead}[1]{{\sffamily\scriptsize\bfseries\color{inkgray}#1}}
 \newcommand{\chaptermeta}[1]{}
 \newcommand{\hlmark}[1]{\textbf{\color{inkblue}#1}}
 \newcommand{\hlwarm}[1]{\textbf{\color{inkwarm}#1}}
 \newcommand{\term}[2]{%
   \textbf{\color{inkblued}#1}%
-  \ifthenelse{\equal{#2}{}}{}{\,{\footnotesize\itshape\color{inkgray}#2}}%
+  \ifblank{#2}{}{\,{\footnotesize\itshape\color{inkgray}#2}}%
 }
 
 % 章节之间的静默分隔
@@ -102,7 +104,7 @@
 
 % 盒子内的小标签
 \newcommand{\boxlabel}[2]{%
-  \ifthenelse{\equal{#2}{}}{}{%
+  \ifblank{#2}{}{%
     {\sffamily\bfseries\scriptsize\color{#1}%
      \raisebox{0.28ex}{\rule{1.05em}{0.55pt}}\hspace{0.55em}#2\par}%
     \vspace{5pt}}}
@@ -113,7 +115,6 @@
   left=11pt, right=11pt, top=10pt, bottom=10pt,
   before skip=13pt, after skip=13pt,
   colframe=white, fontupper=\small,
-  parbox=false,
 }}
 
 \newtcolorbox{egbox}[1]{bookbox, colback=tintblue,
@@ -139,7 +140,7 @@
   before upper={\boxlabel{inkgray}{#1}}}
 
 \newtcolorbox{takeaway}[1]{bookbox, colback=tintblue, boxrule=0.6pt, colframe=inkblue!28,
-  arc=3pt, sharp corners=false, left=13pt, right=13pt, top=11pt, bottom=11pt,
+  arc=3pt, rounded corners, left=13pt, right=13pt, top=11pt, bottom=11pt,
   fontupper=\normalsize,
   before upper={\boxlabel{inkblue}{#1}}}
 
@@ -159,7 +160,7 @@
   left=15pt, right=6pt, top=7pt, bottom=7pt,
   borderline west={2.8pt}{0pt}{inkblue},
   fontupper=\large\bfseries\color{inkbody},
-  after upper={\ifthenelse{\equal{#1}{}}{}{%
+  after upper={\ifblank{#1}{}{%
     \par\vspace{7pt}{\normalfont\sffamily\scriptsize\color{inkfaint}#1}}}}
 
 \newtcolorbox{bridgebox}{bookbox, colback=white,
@@ -179,7 +180,7 @@
   \begin{minipage}[t]{\statwd}%
     \raggedright
     {\fontsize{19}{21}\selectfont\bfseries\color{inkblue}#1}%
-    \ifthenelse{\equal{#2}{}}{}{{\footnotesize\bfseries\color{inkgray}#2}}%
+    \ifblank{#2}{}{{\footnotesize\bfseries\color{inkgray}#2}}%
     \par\vspace{4pt}
     {\scriptsize\color{inkgray}\setlength{\baselineskip}{1.25\baselineskip}#3\par}%
   \end{minipage}\hfill\ignorespaces}
@@ -195,7 +196,7 @@
   \noindent
   \begin{minipage}[t]{2.3em}\raggedright{\sffamily\scriptsize\color{inkblue}#1}\end{minipage}%
   \begin{minipage}[t]{\dimexpr\linewidth-2.5em\relax}%
-    \ifthenelse{\equal{#2}{}}{}{{\bfseries #2}\par\vspace{1pt}}#3%
+    \ifblank{#2}{}{{\bfseries #2}\par\vspace{1pt}}#3%
   \end{minipage}\par}
 
 % ---------- 链条 ----------
@@ -217,7 +218,7 @@
   {\endgroup\par\addvspace{13pt}}
 \newenvironment{tablewrapin}{%
   \par\addvspace{7pt}\begingroup
-  \setlength{\tabcolsep}{5pt}\renewcommand{\arraystretch}{1.32}%
+  \scriptsize\setlength{\tabcolsep}{4pt}\renewcommand{\arraystretch}{1.30}%
   \setlength{\parskip}{0pt}}
   {\endgroup\par\addvspace{7pt}}
 
@@ -279,10 +280,13 @@
 \newcommand{\glossitem}[4]{%
   \par\addvspace{4pt}\noindent
   \textbf{\color{inkblued}#1}%
-  \ifthenelse{\equal{#2}{}}{}{\,{\footnotesize\itshape\color{inkgray}#2}}%
-  \ifthenelse{\equal{#4}{}}{}{\hfill{\sffamily\scriptsize\color{inkfaint}第 #4 章}}%
+  \ifblank{#2}{}{\,{\footnotesize\itshape\color{inkgray}#2}}%
+  \ifblank{#4}{}{\hfill{\sffamily\scriptsize\color{inkfaint}第 #4 章}}%
   \par\vspace{1pt}
   {\footnotesize\color{inkgray}#3\par}
   \vspace{3pt}\noindent{\color{rulegray}\rule{\linewidth}{0.3pt}}\par}
 \setlength{\columnsep}{22pt}
 \setlength{\columnseprule}{0pt}
+
+% 纯英文术语标签（正文中文为空的情况）
+\newcommand{\enterm}[1]{{\footnotesize\itshape\color{inkgray}#1}}

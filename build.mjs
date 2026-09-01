@@ -233,6 +233,7 @@ function homePage() {
 '    <div class="cover__cta">',
 '      <a class="btn btn--primary" id="resumeBtn" href="ch-00.html"><span class="kicker">开始阅读</span><b>序章 · 一张一百块的环球旅行</b></a>',
 '      <a class="btn" href="glossary.html"><span class="kicker">附录</span><b>术语速查 &amp; 数据快照</b></a>',
+'      <a class="btn" href="how-money-moves.pdf" download><span class="kicker">书籍版 · PDF</span><b>A4 排印本 · 约 200 页</b></a>',
 '    </div>',
 '    <div class="cover__facts">',
 '      <div><b>' + FLAT.length + '</b><span>篇，每篇独立成页</span></div>',

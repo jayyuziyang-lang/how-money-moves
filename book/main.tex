@@ -40,7 +40,15 @@
 \pagestyle{bookmain}
 
 \part{地基篇：钱到底是什么}
+% 序章不编号，这样正文里所有「第 N 章」的交叉引用都与书中章号一致
+\begingroup
+\let\ELEGANTchapterA\chapter
+\renewcommand{\chapter}[1]{%
+  \ELEGANTchapterA*{#1}%
+  \addcontentsline{toc}{chapter}{#1}%
+  \markboth{#1}{#1}}
 \input{chapters/ch-00}
+\endgroup
 \input{chapters/ch-01}
 \input{chapters/ch-02}
 \input{chapters/ch-03}
@@ -95,6 +103,7 @@
 \input{backmatter/reading}
 
 \cleardoublepage
+\nocite{*}
 \printbibliography[heading=bibintoc, title={参考文献与数据来源}]
 
 \cleardoublepage
