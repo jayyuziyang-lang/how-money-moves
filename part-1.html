@@ -29,6 +29,7 @@
     <button class="dtab is-on" data-tab="toc">目录</button>
     <button class="dtab" data-tab="sec">本章</button>
     <button class="dtab" data-tab="mark">书签</button>
+    <button class="dtab" data-tab="note">划线</button>
     <button class="dtab" data-tab="find">搜索</button>
     <button class="rbtn drawer__x" data-act="close" aria-label="关闭"><svg viewBox="0 0 24 24"><path d="M6 6l12 12M18 6 6 18"/></svg></button>
   </div>
@@ -36,6 +37,7 @@
     <div class="dpane is-on" data-pane="toc"></div>
     <div class="dpane" data-pane="sec"></div>
     <div class="dpane" data-pane="mark"></div>
+    <div class="dpane" data-pane="note"></div>
     <div class="dpane" data-pane="find"><div class="find"><input type="search" id="q" placeholder="搜索全书正文…" autocomplete="off" spellcheck="false"><div class="find__out"></div></div></div>
   </div>
 </aside>
@@ -47,6 +49,30 @@
   <div class="prefs__row"><span>正文字体</span><div class="seg" data-pref="font"><button data-v="sans">黑体</button><button data-v="serif">宋体</button></div></div>
   <div class="prefs__foot"><b>←</b> <b>→</b> 翻章 · <b>T</b> 目录 · <b>B</b> 书签 · <b>F</b> 搜索 · <b>S</b> 设置 · <b>Esc</b> 关闭</div>
 </aside>
+<div class="seltool" id="seltool" hidden>
+  <button class="swatch swatch--a" data-hl="a" aria-label="蓝色划线"></button>
+  <button class="swatch swatch--b" data-hl="b" aria-label="暖褐划线"></button>
+  <button class="swatch swatch--c" data-hl="c" aria-label="青绿划线"></button>
+  <i class="seltool__sep"></i>
+  <button class="seltool__b" data-selact="card">生成卡片</button>
+  <button class="seltool__b" data-selact="copy">复制</button>
+  <button class="seltool__b seltool__b--del" data-selact="del" hidden>删除划线</button>
+</div>
+<div class="cardwrap" id="cardwrap" aria-hidden="true">
+  <div class="cardwrap__panel">
+    <div class="cardwrap__head">
+      <b>分享卡片</b>
+      <div class="seg" data-card="theme"><button data-v="paper">纸色</button><button data-v="ink">夜色</button></div>
+      <button class="rbtn" data-act="cardclose" aria-label="关闭"><svg viewBox="0 0 24 24"><path d="M6 6l12 12M18 6 6 18"/></svg></button>
+    </div>
+    <div class="cardwrap__stage"><canvas id="cardcv" width="1080" height="1350"></canvas></div>
+    <div class="cardwrap__foot">
+      <button class="btn2 btn2--primary" data-cardact="save">下载图片</button>
+      <button class="btn2" data-cardact="copy">复制图片</button>
+      <button class="btn2" data-cardact="share" hidden>分享</button>
+    </div>
+  </div>
+</div>
 <div class="toast" id="toast"></div>
 <main class="page page--part">
 <section class="part-hero" data-ghost="I"><div class="part-hero__meta"><span class="bar"></span><span class="kicker">LEVEL 01 · FOUNDATIONS</span><span class="part-hero__len">7 章 · 约 2.6 万字 · 约 66 分钟</span></div><h1>地基篇：钱到底是什么<small>FOUNDATIONS</small></h1><p class="part-hero__lede">不谈投资，不谈赚钱。先把最朴素的问题问清楚：你钱包里那串数字，凭什么能换来一碗面？这一卷不需要任何数学，最多做几道加减法。</p></section>

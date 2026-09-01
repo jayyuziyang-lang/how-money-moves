@@ -195,6 +195,103 @@ ok('搜索「货币乘数」有结果', c.n > 0, c.n + ' 条，首条：' + c.fi
 ok('结果高亮关键词', c.mark);
 ok('结果可跳转到小节锚点', /ch-\d+\.html/.test(c.href || ''), c.href);
 
+
+/* ---------- 划线与分享卡片 ---------- */
+await open('/ch-11.html');
+await evalJS("localStorage.removeItem('hmm.state')");
+await open('/ch-11.html');
+const h1 = await evalJS(`(function(){
+  var ps=document.querySelectorAll('.ch-body p');
+  var p=null;
+  for(var i=0;i<ps.length;i++){ if(ps[i].firstChild&&ps[i].firstChild.nodeType===3&&ps[i].firstChild.nodeValue.length>30){p=ps[i];break;} }
+  if(!p) return {err:'no paragraph'};
+  var r=document.createRange(); r.setStart(p.firstChild,0); r.setEnd(p.firstChild,24);
+  var s=window.getSelection(); s.removeAllRanges(); s.addRange(r);
+  document.dispatchEvent(new MouseEvent('mouseup',{bubbles:true}));
+  return {text:r.toString()};
+})()`);
+await sleep(260);
+const h2 = await evalJS(`(function(){
+  var t=document.getElementById('seltool');
+  var vis=t&&!t.hidden;
+  var bx=vis?t.getBoundingClientRect():null;
+  return {visible:!!vis, x:bx?Math.round(bx.left):0, y:bx?Math.round(bx.top):0,
+          swatches:document.querySelectorAll('#seltool .swatch').length,
+          hasCard:!!document.querySelector('#seltool [data-selact="card"]')};
+})()`);
+out.push('--- 划线与分享卡片 ---');
+ok('选中文字弹出工具条', h2.visible && h2.swatches === 3 && h2.hasCard, '三色 + 生成卡片，位置 ' + h2.x + ',' + h2.y);
+
+await evalJS("document.querySelector('#seltool .swatch--b').click()");
+await sleep(320);
+const h3 = await evalJS(`(function(){
+  var st=JSON.parse(localStorage.getItem('hmm.state')||'{}');
+  var m=document.querySelectorAll('mark.hl');
+  var cs=m.length?getComputedStyle(m[0]):null;
+  return {notes:(st.notes||[]).length, marks:m.length, text:((st.notes||[])[0]||{}).x,
+          bg:cs?cs.backgroundColor:'', chapter:((st.notes||[])[0]||{}).c};
+})()`);
+ok('划线已保存并渲染', h3.notes === 1 && h3.marks >= 1 && !!h3.text, h3.notes + ' 条 · ' + h3.marks + ' 个 mark · 底色 ' + h3.bg);
+ok('划线归属章节正确', h3.chapter === 'ch-11', h3.chapter);
+
+await open('/ch-11.html');
+const h4 = await evalJS(`(function(){
+  var m=document.querySelectorAll('mark.hl--b');
+  return {marks:m.length, txt:m.length?m[0].textContent.slice(0,18):''};
+})()`);
+ok('刷新后划线自动恢复', h4.marks >= 1, h4.marks + ' 个 · ' + h4.txt);
+
+const h5 = await evalJS(`(function(){
+  document.querySelector('[data-act="toc"]').click();
+  document.querySelector('.dtab[data-tab="note"]').click();
+  return {items:document.querySelectorAll('.dpane[data-pane="note"] .ni').length,
+          hasCardBtn:!!document.querySelector('[data-ncard]')};
+})()`);
+ok('划线面板列出条目', h5.items === 1 && h5.hasCardBtn, h5.items + ' 条');
+
+await evalJS("document.querySelector('[data-ncard]').click()");
+await sleep(1400);
+const h6 = await evalJS(`(function(){
+  var open=document.body.classList.contains('is-card');
+  var cv=document.getElementById('cardcv');
+  if(!cv) return {open:open,err:'no canvas'};
+  var x=cv.getContext('2d');
+  var d=x.getImageData(0,0,cv.width,cv.height).data;
+  var hist={},n=0;
+  for(var i=0;i<d.length;i+=4*40){ var k=(d[i]>>4)+','+(d[i+1]>>4)+','+(d[i+2]>>4); hist[k]=(hist[k]||0)+1; n++; }
+  var top=0; for(var k in hist) if(hist[k]>top) top=hist[k];
+  return {open:open, w:cv.width, h:cv.height, colors:Object.keys(hist).length,
+          inkPct:+((1-top/n)*100).toFixed(1)};
+})()`);
+ok('卡片工作台打开', h6.open);
+ok('卡片已绘制内容', h6.colors > 6 && h6.inkPct > 3, h6.w + '×' + h6.h + ' · 色彩 ' + h6.colors + ' · 非底色像素 ' + h6.inkPct + '%');
+
+const h7 = await evalJS(`(function(){
+  document.querySelector('.seg[data-card] button[data-v="ink"]').click();
+  var cv=document.getElementById('cardcv');
+  var d=cv.getContext('2d').getImageData(4,4,1,1).data;
+  return {r:d[0],g:d[1],b:d[2]};
+})()`);
+ok('卡片可切换夜色主题', h7.r < 60 && h7.g < 60, 'rgb(' + h7.r + ',' + h7.g + ',' + h7.b + ')');
+
+const h8 = await evalJS(`new Promise(function(res){
+  var cv=document.getElementById('cardcv');
+  cv.toBlob(function(b){ res({ok:!!b, size:b?b.size:0, type:b?b.type:''}); },'image/png');
+})`);
+ok('卡片可导出 PNG', h8.ok && h8.size > 20000, (h8.size/1024).toFixed(0) + ' KB · ' + h8.type);
+
+await evalJS("document.querySelector('[data-act=\"cardclose\"]').click()");
+await sleep(200);
+const h9 = await evalJS(`(function(){
+  document.querySelector('[data-act="toc"]').click();
+  document.querySelector('.dtab[data-tab="note"]').click();
+  document.querySelector('[data-ndel]').click();
+  var st=JSON.parse(localStorage.getItem('hmm.state')||'{}');
+  return {notes:(st.notes||[]).length, marks:document.querySelectorAll('mark.hl').length};
+})()`);
+ok('划线可删除且正文还原', h9.notes === 0 && h9.marks === 0, '剩 ' + h9.notes + ' 条');
+await evalJS("localStorage.removeItem('hmm.state')");
+
 /* ---------- 续读 ---------- */
 await open('/ch-09.html');
 await evalJS('window.scrollTo(0,3000)');
@@ -239,7 +336,7 @@ ok('页脚含署名', cov.foot);
 out.push('--- 首页 ---');
 ok('五卷卡片', e.parts === 5, e.parts + ' 卷');
 ok('29 个篇目入口', e.chLinks === 29, e.chLinks + ' 个');
-ok('阅读统计条', e.stat === 4, e.statTxt);
+ok('阅读统计条', e.stat === 5, e.statTxt);
 ok('续读按钮已更新', /继续阅读|接着读/.test(e.resume), e.resume);
 ok('章节读过状态回显', e.marked > 0, e.marked + ' 章有进度标记');
 ok('首页无横向溢出', !e.overflow);

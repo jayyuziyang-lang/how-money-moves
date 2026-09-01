@@ -288,6 +288,7 @@ function homePage() {
 '</div>',
 '<main class="home">',
 '  <section class="statbar" id="statbar"></section>',
+'  <section class="bmk" id="noteHome"></section>',
 '  <section class="bmk" id="bmkHome"></section>',
 '  <div class="home__head">',
 '    <span class="kicker kicker--accent">CONTENTS · 全书目录</span>',
